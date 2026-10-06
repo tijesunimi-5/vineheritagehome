@@ -11,9 +11,9 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = "" }) 
   const isDark = variant === 'dark';
 
   return (
-    <div className={`flex items-center gap-3 group cursor-pointer select-none ${className}`}>
+    <div className={`flex items-center gap-2.5 group cursor-pointer select-none ${className}`}>
       {/* Brand Emblem Icon */}
-      <div className="relative w-10 h-10 rounded-xl bg-vhh-green-900 border border-vhh-green-700/40 flex items-center justify-center shadow-md overflow-hidden transition-transform duration-300 group-hover:scale-105">
+      <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-vhh-green-900 border border-vhh-green-700/40 flex items-center justify-center shadow-md overflow-hidden transition-transform duration-300 group-hover:scale-105 shrink-0">
         {/* Soft background glow */}
         <div className="absolute inset-0 bg-gradient-to-br from-vhh-green-700 to-vhh-green-950 opacity-90" />
         
@@ -22,7 +22,7 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = "" }) 
           viewBox="0 0 40 40"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="relative z-10 w-6 h-6 text-emerald-100"
+          className="relative z-10 w-5 h-5 sm:w-6 sm:h-6 text-emerald-100"
         >
           {/* Main Stem & Vine Curve */}
           <path
@@ -51,14 +51,14 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = "" }) 
       {/* Brand Name Typography */}
       <div className="flex flex-col">
         <span
-          className={`font-serif text-lg md:text-xl font-bold tracking-tight leading-none ${
+          className={`font-serif text-base sm:text-lg lg:text-xl font-bold tracking-tight leading-tight whitespace-nowrap ${
             isDark ? 'text-vhh-charcoal' : 'text-white'
           }`}
         >
           Vine Heritage Home
         </span>
         <span
-          className={`text-[10px] font-sans tracking-widest uppercase font-semibold ${
+          className={`text-[9px] font-sans tracking-widest uppercase font-semibold hidden xl:block ${
             isDark ? 'text-vhh-green-800' : 'text-emerald-200/90'
           }`}
         >
