@@ -3,21 +3,26 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { AboutOverview } from '@/components/AboutOverview';
-import { WhatWeDoSection } from '@/components/WhatWeDoSection';
-import { ActionableSupportSection } from '@/components/ActionableSupportSection';
-import { DeepExploreGateways } from '@/components/DeepExploreGateways';
+import { VisualDiscovery } from '@/components/VisualDiscovery';
+import { HumanConnection } from '@/components/HumanConnection';
+import { ImageActionCards } from '@/components/ImageActionCards';
+import { CampusPhotoTour } from '@/components/CampusPhotoTour';
+import { LivingPhotoJournal } from '@/components/LivingPhotoJournal';
+import { VisualGateways } from '@/components/VisualGateways';
 import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
 
 import { SupportModal } from '@/components/SupportModal';
 import { VolunteerModal } from '@/components/VolunteerModal';
+import { GalleryModal } from '@/components/GalleryModal';
 import { PlaceholderNoticeModal } from '@/components/PlaceholderNoticeModal';
+import { GalleryItem } from '@/data/vhhData';
 import { ShieldAlert, Sparkles } from 'lucide-react';
 
 export default function Home() {
   const [supportModalOpen, setSupportModalOpen] = useState(false);
   const [volunteerModalOpen, setVolunteerModalOpen] = useState(false);
+  const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
   const [noticeModalOpen, setNoticeModalOpen] = useState(false);
   const [highlightMode, setHighlightMode] = useState(false);
 
@@ -67,25 +72,31 @@ export default function Home() {
       {/* 1. Hero */}
       <Hero onOpenSupport={() => setSupportModalOpen(true)} />
 
-      {/* 2. Who We Are & The Big Idea */}
-      <AboutOverview />
+      {/* 2. Visual Discovery Gallery (Photo Mosaic of Life Dimensions) */}
+      <VisualDiscovery onSelectImage={(item) => setSelectedGalleryItem(item)} />
 
-      {/* 3. What We Do & Why We Do It */}
-      <WhatWeDoSection />
+      {/* 3. The Human Connection (Photo feature storytelling) */}
+      <HumanConnection />
 
-      {/* 4. Actionable Ways to Support (Sponsor School Fees, Food, Visit Us, Partner) */}
-      <ActionableSupportSection
+      {/* 4. Photo-Driven Action Cards (Sponsor Education, Meals, Donate Supplies, Visit) */}
+      <ImageActionCards
         onOpenSupport={() => setSupportModalOpen(true)}
         onOpenVolunteer={() => setVolunteerModalOpen(true)}
       />
 
-      {/* 5. Deep Navigation Gateway (Clean Directory to Dedicated Interactive Pages) */}
-      <DeepExploreGateways />
+      {/* 5. Physical Campus Photo Tour */}
+      <CampusPhotoTour />
 
-      {/* 6. Final Call to Action */}
+      {/* 6. Living Photo Journal (Timeline of moments) */}
+      <LivingPhotoJournal onSelectImage={(item) => setSelectedGalleryItem(item)} />
+
+      {/* 7. Visual Gateway Directory to Dedicated Depth Pages */}
+      <VisualGateways />
+
+      {/* 8. Final Call to Action */}
       <FinalCTA onOpenSupport={() => setSupportModalOpen(true)} />
 
-      {/* 7. Footer */}
+      {/* 9. Footer */}
       <Footer />
 
       {/* Modals */}
@@ -97,6 +108,11 @@ export default function Home() {
       <VolunteerModal
         isOpen={volunteerModalOpen}
         onClose={() => setVolunteerModalOpen(false)}
+      />
+
+      <GalleryModal
+        item={selectedGalleryItem}
+        onClose={() => setSelectedGalleryItem(null)}
       />
 
       <PlaceholderNoticeModal
