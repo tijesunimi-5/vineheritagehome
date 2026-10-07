@@ -31,12 +31,30 @@ export interface StoryCard {
   privacyNotice: string;
 }
 
+export interface VHHNeedItem {
+  id: string;
+  category: 'Education' | 'Nutrition' | 'Skills' | 'Health & Wellbeing' | 'Home & Facilities';
+  title: string;
+  description: string;
+  status: 'Needed' | 'In Progress' | 'Fulfilled';
+  placeholderTag: string;
+}
+
+export interface VHHMomentEntry {
+  id: string;
+  date: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  tag: string;
+}
+
 export const VHH_DATA = {
   brand: {
     name: "Vine Heritage Home",
     shortName: "VHH",
-    tagline: "More Than a Home. A Place to Grow.",
-    subtagline: "Creating safe spaces, nurturing potential, and building brighter futures for vulnerable children.",
+    tagline: "More Than a Home.",
+    subtagline: "A place to belong, to grow, and to build a future.",
     centralCoreStatement: "Vine Heritage Home is more than a home for children. It is a place where vulnerable children are protected, cared for, nurtured, educated, and given the opportunity to grow into a better future.",
     locationPlaceholder: "[LOCATION — ABUJA / NIGERIA REGION]",
     foundedYearPlaceholder: "[YEAR FOUNDED]",
@@ -46,13 +64,15 @@ export const VHH_DATA = {
   },
   
   navLinks: [
-    { name: "Home", href: "#hero" },
-    { name: "Our Story", href: "#story" },
-    { name: "Our Home", href: "#our-home" },
-    { name: "What We Do", href: "#what-we-do" },
-    { name: "Impact", href: "#impact" },
-    { name: "Get Involved", href: "#get-involved" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Our Story", href: "/our-story" },
+    { name: "Explore Home", href: "/our-home" },
+    { name: "Programs", href: "/programs" },
+    { name: "Impact", href: "/impact" },
+    { name: "Stories", href: "/stories" },
+    { name: "Moments", href: "/moments" },
+    { name: "Get Involved", href: "/get-involved" },
+    { name: "Visit & Contact", href: "/contact" },
   ],
 
   fourPillars: [
@@ -87,6 +107,103 @@ export const VHH_DATA = {
       description: "Equipping children with vocational, intellectual, and life skills to blossom into thriving independent adults.",
       iconName: "Sparkles",
       color: "from-emerald-800 to-vhh-red-700"
+    }
+  ],
+
+  chapterHomeScenes: [
+    {
+      id: "exterior",
+      sceneNumber: "01",
+      title: "A Place to Belong.",
+      subtitle: "The Main Campus & Grounds",
+      desc: "Tranquil green sanctuary designed with open spaces, security, and dignified residential architecture.",
+      imageUrl: "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=1600&auto=format&fit=crop",
+      tag: "Sanctuary"
+    },
+    {
+      id: "living",
+      sceneNumber: "02",
+      title: "A Place to Gather.",
+      subtitle: "Common Halls & Fellowship",
+      desc: "Warm communal living spaces where children share evening stories, music, and laughter.",
+      imageUrl: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600&auto=format&fit=crop",
+      tag: "Community"
+    },
+    {
+      id: "learning",
+      sceneNumber: "03",
+      title: "A Place to Learn.",
+      subtitle: "Study Hub & Library",
+      desc: "Dedicated quiet rooms equipped with literature, computers, and homework mentorship desks.",
+      imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop",
+      tag: "Academics"
+    },
+    {
+      id: "dining",
+      sceneNumber: "04",
+      title: "A Place to Nurture.",
+      subtitle: "Communal Dining & Kitchen",
+      desc: "Serving freshly cooked, nutritious meals daily in a warm family dining setting.",
+      imageUrl: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1600&auto=format&fit=crop",
+      tag: "Nourishment"
+    },
+    {
+      id: "quarters",
+      sceneNumber: "05",
+      title: "A Place to Rest.",
+      subtitle: "Dignified Living Quarters",
+      desc: "Comfortable, clean, and restful sleeping quarters supervised by caring house mothers.",
+      imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop",
+      tag: "Rest & Safety"
+    },
+    {
+      id: "expansion",
+      sceneNumber: "06",
+      title: "A Place to Grow.",
+      subtitle: "Active Construction & Growth",
+      desc: "Ongoing facility development expanding housing capacity and building STEM classrooms.",
+      imageUrl: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop",
+      tag: "Growing With Purpose",
+      isConstruction: true
+    }
+  ],
+
+  dayInLifeSequence: [
+    {
+      time: "Morning",
+      title: "Dawn & Morning Prep",
+      desc: "Rising together, morning prayers, nutritious breakfast, and preparing for school.",
+      imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      time: "Learning",
+      title: "Schooling & Mentorship",
+      desc: "Attending accredited schools, tutoring, and afternoon homework sessions.",
+      imageUrl: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      time: "Meals",
+      title: "Nourishment & Gathering",
+      desc: "Communal lunch and dinner prepared with fresh ingredients and shared with laughter.",
+      imageUrl: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      time: "Play",
+      title: "Athletics & Recreation",
+      desc: "Football matches, playground fun, and energetic physical development.",
+      imageUrl: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      time: "Community",
+      title: "Creative Arts & Fellowship",
+      desc: "Drawing, painting, music, and group storytelling in the evening living halls.",
+      imageUrl: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      time: "Evening",
+      title: "Rest & Peace",
+      desc: "Winding down, quiet reading, house mother check-ins, and peaceful sleep.",
+      imageUrl: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop"
     }
   ],
 
@@ -129,6 +246,76 @@ export const VHH_DATA = {
       placeholderTag: "[CURRENT VHH OPERATIONAL DATA]"
     }
   ],
+
+  needsBoard: [
+    {
+      id: "need-1",
+      category: "Nutrition",
+      title: "Bulk Grain & Staple Supplies",
+      description: "Non-perishable food supplies needed for daily communal meal preparation.",
+      status: "Needed",
+      placeholderTag: "[VERIFIED NUTRITIONAL NEED — 10 BAGS RICE/BEANS]"
+    },
+    {
+      id: "need-2",
+      category: "Education",
+      title: "School Uniforms & Textbooks",
+      description: "Academic materials and uniforms for newly enrolled primary and secondary students.",
+      status: "Needed",
+      placeholderTag: "[VERIFIED EDUCATIONAL NEED — 25 STUDENT PACKS]"
+    },
+    {
+      id: "need-3",
+      category: "Skills",
+      title: "Refurbished Laptops & Tablets",
+      description: "Digital literacy hardware for afternoon computer training classes.",
+      status: "In Progress",
+      placeholderTag: "[VERIFIED SKILLS NEED — 8 WORKSTATIONS]"
+    },
+    {
+      id: "need-4",
+      category: "Health & Wellbeing",
+      title: "First Aid & Medical Consumables",
+      description: "Preventative health screening supplies and daily hygiene kits.",
+      status: "Needed",
+      placeholderTag: "[VERIFIED HEALTH NEED — MEDICAL KITS]"
+    },
+    {
+      id: "need-5",
+      category: "Home & Facilities",
+      title: "Solar Inverter Expansion",
+      description: "Uninterrupted clean power supply for study halls and residential lighting.",
+      status: "Needed",
+      placeholderTag: "[VERIFIED FACILITY EXPANSION NEED]"
+    }
+  ] as VHHNeedItem[],
+
+  momentsJournal: [
+    {
+      id: "m-1",
+      date: "September 2026",
+      title: "Back to School Academic Session",
+      description: "Welcoming residents into the new academic term with school supplies and peer encouragement.",
+      imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop",
+      tag: "Academic Achievement"
+    },
+    {
+      id: "m-2",
+      date: "August 2026",
+      title: "Partner Health Screening & Wellness Day",
+      description: "Volunteer medical team conducting comprehensive checkups and health education.",
+      imageUrl: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop",
+      tag: "Health & Wellbeing"
+    },
+    {
+      id: "m-3",
+      date: "July 2026",
+      title: "Learning Center Foundation Laying",
+      description: "Milestone moment laying the foundation for the new STEM computer lab and library.",
+      imageUrl: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop",
+      tag: "Campus Progress"
+    }
+  ] as VHHMomentEntry[],
 
   transformationPillars: [
     {

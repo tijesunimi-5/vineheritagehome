@@ -3,32 +3,26 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { Introduction } from '@/components/Introduction';
-import { OurStory } from '@/components/OurStory';
-import { MoreThanAnOrphanage } from '@/components/MoreThanAnOrphanage';
-import { OurHome } from '@/components/OurHome';
-import { LifeAtVHH } from '@/components/LifeAtVHH';
-import { Programs } from '@/components/Programs';
-import { Impact } from '@/components/Impact';
-import { Stories } from '@/components/Stories';
-import { Vision } from '@/components/Vision';
-import { GetInvolved } from '@/components/GetInvolved';
-import { Partners } from '@/components/Partners';
-import { Gallery } from '@/components/Gallery';
-import { FinalCTA } from '@/components/FinalCTA';
+import { ChapterIdea } from '@/components/ChapterIdea';
+import { ChapterExploreHome } from '@/components/ChapterExploreHome';
+import { ChapterDayInLife } from '@/components/ChapterDayInLife';
+import { ChapterStoryTeaser } from '@/components/ChapterStoryTeaser';
+import { ChapterChildrenStories } from '@/components/ChapterChildrenStories';
+import { ChapterMomentsJournal } from '@/components/ChapterMomentsJournal';
+import { ChapterNeedsBoard } from '@/components/ChapterNeedsBoard';
+import { ChapterSupportWays } from '@/components/ChapterSupportWays';
+import { ChapterFutureVision } from '@/components/ChapterFutureVision';
+import { ChapterComeSee } from '@/components/ChapterComeSee';
 import { Footer } from '@/components/Footer';
 
 import { SupportModal } from '@/components/SupportModal';
 import { VolunteerModal } from '@/components/VolunteerModal';
-import { GalleryModal } from '@/components/GalleryModal';
 import { PlaceholderNoticeModal } from '@/components/PlaceholderNoticeModal';
-import { GalleryItem } from '@/data/vhhData';
 import { ShieldAlert, Sparkles } from 'lucide-react';
 
 export default function Home() {
   const [supportModalOpen, setSupportModalOpen] = useState(false);
   const [volunteerModalOpen, setVolunteerModalOpen] = useState(false);
-  const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
   const [noticeModalOpen, setNoticeModalOpen] = useState(false);
   const [highlightMode, setHighlightMode] = useState(false);
 
@@ -67,7 +61,7 @@ export default function Home() {
         </button>
       </div>
 
-      {/* 1. Navigation Header */}
+      {/* Navigation Header */}
       <Navbar
         onOpenSupport={() => setSupportModalOpen(true)}
         onOpenVolunteer={() => setVolunteerModalOpen(true)}
@@ -75,52 +69,40 @@ export default function Home() {
         onToggleHighlight={() => setHighlightMode(!highlightMode)}
       />
 
-      {/* 2. Hero Section */}
+      {/* CHAPTER 01 — ARRIVAL */}
       <Hero onOpenSupport={() => setSupportModalOpen(true)} />
 
-      {/* 3. Introduction / The Big Idea */}
-      <Introduction />
+      {/* CHAPTER 02 — THE IDEA */}
+      <ChapterIdea />
 
-      {/* 4. Our Story */}
-      <OurStory />
+      {/* CHAPTER 03 — EXPLORE THE HOME (Sticky Viewport Sequence) */}
+      <ChapterExploreHome />
 
-      {/* 5. More Than an Orphanage */}
-      <MoreThanAnOrphanage />
+      {/* CHAPTER 04 — A DAY AT VINE HERITAGE HOME */}
+      <ChapterDayInLife />
 
-      {/* 6. Our Home (Physical Environment & Masterplan) */}
-      <OurHome />
+      {/* CHAPTER 05 — THE STORY BEHIND THE HOME */}
+      <ChapterStoryTeaser />
 
-      {/* 7. Life at Vine Heritage Home */}
-      <LifeAtVHH />
+      {/* CHAPTER 06 — EVERY CHILD HAS A STORY */}
+      <ChapterChildrenStories />
 
-      {/* 8. What We Do (Programs) */}
-      <Programs />
+      {/* CHAPTER 07 — MOMENTS AT VINE HERITAGE HOME */}
+      <ChapterMomentsJournal />
 
-      {/* 9. Impact */}
-      <Impact />
+      {/* CHAPTER 08 — WHAT WE NEED */}
+      <ChapterNeedsBoard />
 
-      {/* 10. Stories */}
-      <Stories />
+      {/* CHAPTER 09 — WAYS TO SUPPORT */}
+      <ChapterSupportWays onOpenSupport={() => setSupportModalOpen(true)} />
 
-      {/* 11. Our Vision */}
-      <Vision />
+      {/* CHAPTER 10 — THE FUTURE */}
+      <ChapterFutureVision />
 
-      {/* 12. Community / Get Involved */}
-      <GetInvolved
-        onOpenSupport={() => setSupportModalOpen(true)}
-        onOpenVolunteer={() => setVolunteerModalOpen(true)}
-      />
+      {/* FINAL CHAPTER — COME SEE FOR YOURSELF */}
+      <ChapterComeSee />
 
-      {/* 13. Partners / Supporters */}
-      <Partners />
-
-      {/* 14. Gallery */}
-      <Gallery onSelectImage={(item) => setSelectedGalleryItem(item)} />
-
-      {/* 15. Final Call to Action */}
-      <FinalCTA onOpenSupport={() => setSupportModalOpen(true)} />
-
-      {/* 16. Footer */}
+      {/* Footer */}
       <Footer />
 
       {/* Modals */}
@@ -132,11 +114,6 @@ export default function Home() {
       <VolunteerModal
         isOpen={volunteerModalOpen}
         onClose={() => setVolunteerModalOpen(false)}
-      />
-
-      <GalleryModal
-        item={selectedGalleryItem}
-        onClose={() => setSelectedGalleryItem(null)}
       />
 
       <PlaceholderNoticeModal
