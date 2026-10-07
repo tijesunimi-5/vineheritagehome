@@ -1,11 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Home, Layers, BarChart3, Heart, Camera, MapPin, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export const VisualGateways: React.FC = () => {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
   const depthRoutes = [
     {
       title: "Our Story & Mandate",
@@ -13,7 +15,7 @@ export const VisualGateways: React.FC = () => {
       imageUrl: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop",
       href: "/our-story",
       icon: BookOpen,
-      tag: "History & Genesis"
+      tag: "History"
     },
     {
       title: "Explore Campus Facilities",
@@ -21,7 +23,7 @@ export const VisualGateways: React.FC = () => {
       imageUrl: "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=800&auto=format&fit=crop",
       href: "/our-home",
       icon: Home,
-      tag: "Physical Home"
+      tag: "Campus"
     },
     {
       title: "Care & Development Programs",
@@ -29,7 +31,7 @@ export const VisualGateways: React.FC = () => {
       imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop",
       href: "/programs",
       icon: Layers,
-      tag: "Services"
+      tag: "Programs"
     },
     {
       title: "Impact & Empirical Data",
@@ -37,7 +39,7 @@ export const VisualGateways: React.FC = () => {
       imageUrl: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop",
       href: "/impact",
       icon: BarChart3,
-      tag: "Verifiable Metrics"
+      tag: "Impact"
     },
     {
       title: "Children & Alumni Stories",
@@ -45,7 +47,7 @@ export const VisualGateways: React.FC = () => {
       imageUrl: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?q=80&w=800&auto=format&fit=crop",
       href: "/stories",
       icon: Heart,
-      tag: "Human Stories"
+      tag: "Stories"
     },
     {
       title: "Living Photo Journal",
@@ -53,7 +55,7 @@ export const VisualGateways: React.FC = () => {
       imageUrl: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800&auto=format&fit=crop",
       href: "/moments",
       icon: Camera,
-      tag: "Photo Archive"
+      tag: "Moments"
     },
     {
       title: "Plan a Visit & Directions",
@@ -70,20 +72,102 @@ export const VisualGateways: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-12">
           <span className="text-xs font-mono font-bold uppercase tracking-widest text-vhh-green-800 block mb-2">
-            NAVIGATION GATEWAY TO DEDICATED DEPTH PAGES
+            NAVIGATION GATEWAY & DEDICATED CHAPTERS
           </span>
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-vhh-charcoal leading-tight">
-            Dive Deeper into <span className="italic font-normal text-vhh-green-800">Vine Heritage Home.</span>
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-vhh-charcoal leading-tight">
+            Explore Vine Heritage Home <span className="italic font-normal text-vhh-green-800">In Depth.</span>
           </h2>
-          <p className="mt-3 text-base text-vhh-muted font-light leading-relaxed">
-            Select a dedicated chapter page below to explore full details, documents, and historical records.
+          <p className="mt-3 text-sm text-vhh-muted font-light leading-relaxed">
+            Hover over the horizontal card deck to reveal details, or tap any card to open the dedicated page.
           </p>
         </div>
 
-        {/* Photo Card Gateways Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 1. DESKTOP ACCORDION LAYOUT (Horizontal Stacked Card Deck for Large Screens) */}
+        <div
+          onMouseLeave={() => setHoveredIdx(null)}
+          className="hidden lg:flex flex-row gap-3 h-[460px] w-full items-stretch"
+        >
+          {depthRoutes.map((route, idx) => {
+            const IconComp = route.icon;
+            const isHovered = hoveredIdx === idx;
+            const isAnyHovered = hoveredIdx !== null;
+
+            // Compute flex basis dynamically for smooth expanding horizontal deck
+            let flexClass = 'flex-1';
+            if (isAnyHovered) {
+              if (isHovered) {
+                flexClass = 'flex-[3.5]';
+              } else {
+                flexClass = 'flex-[0.75]';
+              }
+            }
+
+            return (
+              <div
+                key={idx}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                className={`relative rounded-3xl overflow-hidden bg-vhh-dark transition-all duration-500 ease-out cursor-pointer shadow-md hover:shadow-2xl border border-vhh-green-900/30 ${flexClass}`}
+              >
+                <Link href={route.href} className="w-full h-full block relative">
+                  {/* Photo Background */}
+                  <img
+                    src={route.imageUrl}
+                    alt={route.title}
+                    className="w-full h-full object-cover transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                  />
+                  
+                  {/* Dark Overlay Gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-vhh-dark via-vhh-dark/40 to-transparent transition-opacity duration-500 ${
+                    isHovered ? 'opacity-95' : 'opacity-80'
+                  }`} />
+
+                  {/* Top Badge */}
+                  <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/90 text-vhh-charcoal backdrop-blur-md shadow-sm flex items-center gap-1.5 whitespace-nowrap">
+                      <IconComp className="w-3.5 h-3.5 text-vhh-green-700 shrink-0" />
+                      <span>{route.tag}</span>
+                    </span>
+                  </div>
+
+                  {/* Bottom Content Area */}
+                  <div className="absolute bottom-0 inset-x-0 p-5 xl:p-6 z-10 flex flex-col justify-end">
+                    
+                    <h3 className={`font-serif font-bold text-white transition-all duration-300 leading-snug ${
+                      isHovered ? 'text-2xl text-emerald-300 mb-2' : 'text-lg line-clamp-2'
+                    }`}>
+                      {route.title}
+                    </h3>
+
+                    {/* Description - fully visible when hovered or unhovered base */}
+                    <p className={`text-xs text-stone-200 font-light leading-relaxed transition-all duration-500 ${
+                      isHovered
+                        ? 'opacity-100 max-h-24 mb-4'
+                        : isAnyHovered
+                        ? 'opacity-0 max-h-0 overflow-hidden'
+                        : 'opacity-90 line-clamp-2 mb-2'
+                    }`}>
+                      {route.desc}
+                    </p>
+
+                    {/* Action Button */}
+                    <div className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                      isHovered ? 'text-white opacity-100 translate-y-0' : 'text-emerald-300 opacity-90'
+                    }`}>
+                      <span>Explore Page</span>
+                      <ArrowRight className={`w-4 h-4 transition-transform ${isHovered ? 'translate-x-1' : ''}`} />
+                    </div>
+
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 2. MOBILE & TABLET LAYOUT (Normal Vertical Grid for Screens < 1024px) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:hidden">
           {depthRoutes.map((route, idx) => {
             const IconComp = route.icon;
             return (
@@ -96,7 +180,7 @@ export const VisualGateways: React.FC = () => {
               >
                 <Link
                   href={route.href}
-                  className="group relative rounded-3xl overflow-hidden bg-vhh-dark h-72 block shadow-md hover:shadow-2xl transition-all border border-vhh-green-900/20"
+                  className="group relative rounded-3xl overflow-hidden bg-vhh-dark h-72 block shadow-md hover:shadow-xl transition-all border border-vhh-green-900/20"
                 >
                   <img
                     src={route.imageUrl}
