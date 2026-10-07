@@ -3,16 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { ChapterIdea } from '@/components/ChapterIdea';
-import { ChapterExploreHome } from '@/components/ChapterExploreHome';
-import { ChapterDayInLife } from '@/components/ChapterDayInLife';
-import { ChapterStoryTeaser } from '@/components/ChapterStoryTeaser';
-import { ChapterChildrenStories } from '@/components/ChapterChildrenStories';
-import { ChapterMomentsJournal } from '@/components/ChapterMomentsJournal';
-import { ChapterNeedsBoard } from '@/components/ChapterNeedsBoard';
-import { ChapterSupportWays } from '@/components/ChapterSupportWays';
-import { ChapterFutureVision } from '@/components/ChapterFutureVision';
-import { ChapterComeSee } from '@/components/ChapterComeSee';
+import { AboutOverview } from '@/components/AboutOverview';
+import { WhatWeDoSection } from '@/components/WhatWeDoSection';
+import { ActionableSupportSection } from '@/components/ActionableSupportSection';
+import { DeepExploreGateways } from '@/components/DeepExploreGateways';
+import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
 
 import { SupportModal } from '@/components/SupportModal';
@@ -69,40 +64,28 @@ export default function Home() {
         onToggleHighlight={() => setHighlightMode(!highlightMode)}
       />
 
-      {/* CHAPTER 01 — ARRIVAL */}
+      {/* 1. Hero */}
       <Hero onOpenSupport={() => setSupportModalOpen(true)} />
 
-      {/* CHAPTER 02 — THE IDEA */}
-      <ChapterIdea />
+      {/* 2. Who We Are & The Big Idea */}
+      <AboutOverview />
 
-      {/* CHAPTER 03 — EXPLORE THE HOME (Sticky Viewport Sequence) */}
-      <ChapterExploreHome />
+      {/* 3. What We Do & Why We Do It */}
+      <WhatWeDoSection />
 
-      {/* CHAPTER 04 — A DAY AT VINE HERITAGE HOME */}
-      <ChapterDayInLife />
+      {/* 4. Actionable Ways to Support (Sponsor School Fees, Food, Visit Us, Partner) */}
+      <ActionableSupportSection
+        onOpenSupport={() => setSupportModalOpen(true)}
+        onOpenVolunteer={() => setVolunteerModalOpen(true)}
+      />
 
-      {/* CHAPTER 05 — THE STORY BEHIND THE HOME */}
-      <ChapterStoryTeaser />
+      {/* 5. Deep Navigation Gateway (Clean Directory to Dedicated Interactive Pages) */}
+      <DeepExploreGateways />
 
-      {/* CHAPTER 06 — EVERY CHILD HAS A STORY */}
-      <ChapterChildrenStories />
+      {/* 6. Final Call to Action */}
+      <FinalCTA onOpenSupport={() => setSupportModalOpen(true)} />
 
-      {/* CHAPTER 07 — MOMENTS AT VINE HERITAGE HOME */}
-      <ChapterMomentsJournal />
-
-      {/* CHAPTER 08 — WHAT WE NEED */}
-      <ChapterNeedsBoard />
-
-      {/* CHAPTER 09 — WAYS TO SUPPORT */}
-      <ChapterSupportWays onOpenSupport={() => setSupportModalOpen(true)} />
-
-      {/* CHAPTER 10 — THE FUTURE */}
-      <ChapterFutureVision />
-
-      {/* FINAL CHAPTER — COME SEE FOR YOURSELF */}
-      <ChapterComeSee />
-
-      {/* Footer */}
+      {/* 7. Footer */}
       <Footer />
 
       {/* Modals */}
