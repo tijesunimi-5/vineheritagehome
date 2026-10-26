@@ -6,7 +6,6 @@ import { PartnershipStrip } from '@/components/PartnershipStrip';
 import { WhoWeAreSection } from '@/components/WhoWeAreSection';
 import { HowToHelpSection } from '@/components/HowToHelpSection';
 import { VisitUsSection } from '@/components/VisitUsSection';
-import { FinancialTransparencySection } from '@/components/FinancialTransparencySection';
 import { Footer } from '@/components/Footer';
 import { VolunteerModal } from '@/components/VolunteerModal';
 import { SupportModal } from '@/components/SupportModal';
@@ -56,15 +55,6 @@ export default function Home() {
       */}
       <VisitUsSection 
         onPlanVisit={() => setVisitModalOpen(true)}
-      />
-
-      {/* 
-        SECTION 05 — RADICAL FINANCIAL STEWARDSHIP & DIRECT GIVING:
-        Clear 5-pillar breakdown of how funds are used (Bus fuel, Staff stipends, Kitchen needs,
-        Clinic bills, Solar maintenance) + Simple, frictionless Direct Bank Transfer widget.
-      */}
-      <FinancialTransparencySection 
-        onOpenModal={() => setSupportModalOpen(true)}
       />
 
       {/* FOOTER */}
