@@ -9,7 +9,6 @@ import {
   PackageCheck, 
   ArrowRight, 
   Heart, 
-  Sparkles,
   CheckCircle2,
   ListFilter
 } from 'lucide-react';
@@ -251,7 +250,7 @@ export const HowToHelpSection: React.FC<HowToHelpSectionProps> = ({ onDonate }) 
         <div className="mt-12 sm:mt-16 p-6 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-2xl bg-vhh-green-50 border border-vhh-green-200 flex items-center justify-center text-vhh-green-800 shrink-0">
-              <Sparkles className="w-6 h-6 text-vhh-green-700" />
+              <PackageCheck className="w-6 h-6 text-vhh-green-700" />
             </div>
             <div>
               <h4 className="font-serif text-lg sm:text-xl font-bold text-vhh-charcoal">

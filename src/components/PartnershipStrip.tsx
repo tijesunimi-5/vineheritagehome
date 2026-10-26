@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Info, Sparkles } from 'lucide-react';
+import { Info } from 'lucide-react';
 
 interface PartnerItem {
   id: string;

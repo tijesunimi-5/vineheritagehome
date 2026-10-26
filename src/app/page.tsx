@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Hero } from '@/components/Hero';
 import { PartnershipStrip } from '@/components/PartnershipStrip';
 import { WhoWeAreSection } from '@/components/WhoWeAreSection';
+import { FoundersSection } from '@/components/FoundersSection';
 import { HowToHelpSection } from '@/components/HowToHelpSection';
 import { VisitUsSection } from '@/components/VisitUsSection';
 import { Footer } from '@/components/Footer';
@@ -38,6 +39,15 @@ export default function Home() {
         the 239 children in care, and clear gateways to our full story and home.
       */}
       <WhoWeAreSection />
+
+      {/* 
+        A WORD FROM OUR FOUNDERS (CEO & WIFE):
+        Heartfelt message and leadership portrait of Stevens Olusola Ajayi &
+        Dr. Stevens Gloria Chinwe, dedicating over 20 years to raise 239 children.
+      */}
+      <FoundersSection 
+        onPlanVisit={() => setVisitModalOpen(true)}
+      />
 
       {/* 
         HOW YOU CAN HELP:

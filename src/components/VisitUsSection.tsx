@@ -10,7 +10,7 @@ import {
   MessageSquare, 
   Film, 
   BookOpen, 
-  Sparkles, 
+  HeartHandshake, 
   Navigation,
   Compass,
   Camera
@@ -42,7 +42,7 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
       badgeColor: "bg-amber-100 text-amber-900 border-amber-200"
     },
     {
-      icon: Sparkles,
+      icon: HeartHandshake,
       title: "Ground & Home Care",
       subtitle: "Lend a Helping Hand",
       description: "Join our dedicated caregivers for a hands-on service day helping clean, landscape, and care for the residential grounds, garden, and common rooms.",

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Heart, Users, Home, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Heart, Users, Home, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
 export const WhoWeAreSection: React.FC = () => {
@@ -56,7 +56,7 @@ export const WhoWeAreSection: React.FC = () => {
               
               {/* Top Sanctuary Badge */}
               <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-950/60 backdrop-blur-md text-[11px] font-mono uppercase tracking-wider text-emerald-300 border border-white/20 shadow-md">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 <span>Kuje Sanctuary &bull; 24/7 Family Care</span>
               </div>
 

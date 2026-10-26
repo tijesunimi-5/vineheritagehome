@@ -15,7 +15,6 @@ import {
   ShieldCheck, 
   Tag, 
   CheckCircle2,
-  Sparkles,
   ArrowUpRight
 } from 'lucide-react';
 import Link from 'next/link';
