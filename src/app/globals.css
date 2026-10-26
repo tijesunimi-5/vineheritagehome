@@ -72,3 +72,30 @@ body.highlight-placeholders .vhh-placeholder-tag {
   0%, 100% { box-shadow: 0 0 0 0 rgba(184, 50, 50, 0.4); }
   50% { box-shadow: 0 0 0 6px rgba(184, 50, 50, 0); }
 }
+
+/* Silky Marquee Animation for Partners */
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
+  white-space: nowrap !important;
+  animation: marqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover,
+.pause-on-hover:hover .animate-marquee {
+  animation-play-state: paused !important;
+}
+
+

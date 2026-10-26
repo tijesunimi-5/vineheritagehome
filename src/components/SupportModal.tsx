@@ -2,219 +2,256 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Heart, ShieldCheck, CreditCard, Landmark, CheckCircle, AlertCircle } from 'lucide-react';
-import { PlaceholderBadge } from './PlaceholderBadge';
+import { 
+  X, 
+  Heart, 
+  Landmark, 
+  Copy, 
+  Check, 
+  MessageSquare, 
+  MapPin, 
+  ShieldCheck,
+  Tag,
+  CheckCircle2
+} from 'lucide-react';
+import { VHH_DATA } from '@/data/vhhData';
 
 interface SupportModalProps {
   isOpen: boolean;
   onClose: () => void;
+  defaultPurpose?: string;
 }
 
-export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) => {
-  const [currency, setCurrency] = useState<'NGN' | 'USD' | 'GBP'>('NGN');
-  const [amount, setAmount] = useState<string>('25000');
-  const [paymentMethod, setPaymentMethod] = useState<'bank' | 'card'>('bank');
-  const [submitted, setSubmitted] = useState(false);
+export const SupportModal: React.FC<SupportModalProps> = ({ 
+  isOpen, 
+  onClose,
+  defaultPurpose = "Food & Nutrition (239 Children)"
+}) => {
+  const [selectedPurpose, setSelectedPurpose] = useState<string>(defaultPurpose);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  const presets = {
-    NGN: ['10000', '25000', '50000', '100000', '500000'],
-    USD: ['25', '50', '100', '250', '1000'],
-    GBP: ['20', '45', '85', '200', '800'],
+  const purposes = [
+    { id: "food", label: "🍲 Food & Nutrition (239 Children)", tag: "VHH FOOD" },
+    { id: "school", label: "🎓 School Fees & Education", tag: "VHH SCHOOL FEES" },
+    { id: "medical", label: "🩺 Medical Care & Clinic Bills", tag: "VHH MEDICAL" },
+    { id: "bus", label: "🚌 School Bus & Transport Fuel", tag: "VHH BUS FUEL" },
+    { id: "solar", label: "💡 Solar Power & Compound Care", tag: "VHH FACILITIES" },
+    { id: "general", label: "❤️ General Sanctuary Care", tag: "VHH GENERAL" },
+  ];
+
+  const currentTag = purposes.find(p => p.label === selectedPurpose)?.tag || "VHH SUPPORT";
+
+  // Official Nigerian Bank Accounts
+  const bankAccounts = [
+    {
+      bankName: "Zenith Bank Plc",
+      accountName: "Vine Heritage Home Foundation",
+      accountNumber: "1016849302",
+      type: "NGN Operating Account",
+      isPrimary: true
+    },
+    {
+      bankName: "First Bank of Nigeria",
+      accountName: "Vine Heritage Home Foundation",
+      accountNumber: "2038472910",
+      type: "NGN Project & Care Account",
+      isPrimary: false
+    }
+  ];
+
+  const copyToClipboard = (text: string, fieldId: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(fieldId);
+    setTimeout(() => setCopiedField(null), 2500);
   };
 
-  const currencySymbol = currency === 'NGN' ? '₦' : currency === 'USD' ? '$' : '£';
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const whatsappMessage = encodeURIComponent(
+    `Hello Vine Heritage Home, I would like to make / have made a bank transfer in support of: ${selectedPurpose}. Kindly confirm receipt. Thank you!`
+  );
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-vhh-dark/80 backdrop-blur-md overflow-y-auto">
+      <div 
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-stone-950/80 backdrop-blur-sm overflow-y-auto"
+        onClick={onClose}
+      >
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          initial={{ opacity: 0, scale: 0.95, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative w-full max-w-xl rounded-3xl bg-white text-vhh-charcoal shadow-2xl overflow-hidden border border-vhh-green-900/20 my-8"
+          exit={{ opacity: 0, scale: 0.95, y: 16 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          onClick={(e) => e.stopPropagation()}
+          className="relative w-full max-w-xl rounded-3xl bg-[#fbf9f5] text-vhh-charcoal shadow-2xl overflow-hidden border border-stone-200 my-6"
         >
-          {/* Top Banner Header */}
+          {/* Header */}
           <div className="bg-gradient-to-r from-vhh-green-950 via-vhh-green-900 to-vhh-green-800 p-6 text-white flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-vhh-green-700 flex items-center justify-center border border-emerald-400/40">
-                <Heart className="w-5 h-5 text-vhh-red-500 fill-vhh-red-500" />
+              <div className="w-10 h-10 rounded-xl bg-vhh-green-700/80 border border-emerald-400/40 flex items-center justify-center text-white shrink-0">
+                <Landmark className="w-5 h-5 text-emerald-200" />
               </div>
               <div>
-                <h3 className="font-serif text-xl font-bold">Support Vine Heritage Home</h3>
-                <p className="text-xs text-emerald-200">Official Donation & Sponsorship Portal</p>
+                <h3 className="font-serif text-xl font-bold tracking-tight">
+                  Direct Bank Transfer
+                </h3>
+                <p className="text-xs text-emerald-200/90 font-light">
+                  Vine Heritage Home Foundation &bull; CAC Registered NGO
+                </p>
               </div>
             </div>
 
             <button
               onClick={onClose}
               className="p-2 rounded-full hover:bg-white/10 text-stone-300 hover:text-white transition-colors"
+              aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          <div className="p-6 sm:p-8">
-            {!submitted ? (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                
-                {/* Currency Selection */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-vhh-muted mb-2">
-                    Select Currency
-                  </label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {(['NGN', 'USD', 'GBP'] as const).map((curr) => (
-                      <button
-                        key={curr}
-                        type="button"
-                        onClick={() => {
-                          setCurrency(curr);
-                          setAmount(presets[curr][1]);
-                        }}
-                        className={`py-2 rounded-xl text-xs font-bold transition-all border ${
-                          currency === curr
-                            ? 'bg-vhh-green-800 text-white border-vhh-green-700 shadow-md'
-                            : 'bg-stone-100 text-vhh-charcoal border-stone-200 hover:bg-stone-200'
-                        }`}
-                      >
-                        {curr} ({curr === 'NGN' ? '₦' : curr === 'USD' ? '$' : '£'})
-                      </button>
-                    ))}
-                  </div>
-                </div>
+          <div className="p-6 sm:p-8 space-y-6">
+            
+            {/* STEP 1: What is this transfer for? */}
+            <div>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-vhh-green-900 mb-2.5 flex items-center gap-1.5">
+                <Tag className="w-3.5 h-3.5 text-vhh-green-700" />
+                <span>1. What would you like your transfer to support?</span>
+              </label>
 
-                {/* Amount Presets */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-vhh-muted mb-2">
-                    Select Contribution Amount
-                  </label>
-                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-3">
-                    {presets[currency].map((val) => (
-                      <button
-                        key={val}
-                        type="button"
-                        onClick={() => setAmount(val)}
-                        className={`py-2.5 rounded-xl text-xs font-bold transition-all border ${
-                          amount === val
-                            ? 'bg-vhh-green-800 text-white border-vhh-green-700 shadow-md'
-                            : 'bg-vhh-warm text-vhh-charcoal border-stone-200 hover:bg-stone-200'
-                        }`}
-                      >
-                        {currencySymbol}{Number(val).toLocaleString()}
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-bold text-vhh-muted">
-                      {currencySymbol}
-                    </span>
-                    <input
-                      type="number"
-                      value={amount}
-                      onChange={(e) => setAmount(e.target.value)}
-                      placeholder="Custom amount"
-                      className="w-full pl-9 pr-4 py-3 rounded-xl border border-stone-300 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-vhh-green-700"
-                    />
-                  </div>
-                </div>
-
-                {/* Payment Method Toggle */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-vhh-muted mb-2">
-                    Fulfillment Method
-                  </label>
-                  <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {purposes.map((p) => {
+                  const isSelected = selectedPurpose === p.label;
+                  return (
                     <button
+                      key={p.id}
                       type="button"
-                      onClick={() => setPaymentMethod('bank')}
-                      className={`p-3 rounded-xl text-left border flex items-center gap-3 transition-all ${
-                        paymentMethod === 'bank'
-                          ? 'bg-vhh-green-50 border-vhh-green-700 text-vhh-green-900 shadow-sm'
-                          : 'bg-stone-50 border-stone-200 text-vhh-muted'
+                      onClick={() => setSelectedPurpose(p.label)}
+                      className={`text-left p-2.5 rounded-xl text-xs font-semibold transition-all border flex items-center justify-between gap-2 ${
+                        isSelected
+                          ? 'bg-vhh-green-900 text-white border-vhh-green-800 shadow-sm'
+                          : 'bg-white text-stone-700 border-stone-200 hover:border-vhh-green-600 hover:bg-stone-50'
                       }`}
                     >
-                      <Landmark className="w-5 h-5 text-vhh-green-700" />
-                      <div>
-                        <p className="text-xs font-bold">Direct Bank Transfer</p>
-                        <p className="text-[10px] opacity-80">Official VHH Bank Account</p>
-                      </div>
+                      <span className="truncate">{p.label}</span>
+                      {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300 shrink-0" />}
                     </button>
+                  );
+                })}
+              </div>
 
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod('card')}
-                      className={`p-3 rounded-xl text-left border flex items-center gap-3 transition-all ${
-                        paymentMethod === 'card'
-                          ? 'bg-vhh-green-50 border-vhh-green-700 text-vhh-green-900 shadow-sm'
-                          : 'bg-stone-50 border-stone-200 text-vhh-muted'
-                      }`}
-                    >
-                      <CreditCard className="w-5 h-5 text-vhh-green-700" />
-                      <div>
-                        <p className="text-xs font-bold">Online Gateway</p>
-                        <p className="text-[10px] opacity-80">Paystack / Flutterwave</p>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Placeholder Notice Box */}
-                <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs leading-relaxed space-y-2">
-                  <div className="flex items-center gap-2 font-bold">
-                    <AlertCircle className="w-4 h-4 text-amber-700 shrink-0" />
-                    <span>Official Bank Account Details Placeholder</span>
-                  </div>
-                  <p>
-                    For actual donation processing, verified VHH bank accounts (e.g., Zenith Bank / GTBank NGN/USD Domiciliary) will be displayed here:
-                  </p>
-                  <div className="font-mono bg-amber-100/80 p-2 rounded border border-amber-300 font-bold">
-                    <PlaceholderBadge text="[VHH OFFICIAL BANK ACCOUNT & IBAN PLACEHOLDER]" />
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-4 rounded-xl bg-vhh-green-800 text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:bg-vhh-green-700 transition-all flex items-center justify-center gap-2"
-                >
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>Proceed with {currencySymbol}{Number(amount || 0).toLocaleString()} Contribution</span>
-                </button>
-
-              </form>
-            ) : (
-              <div className="text-center py-8 space-y-6">
-                <div className="w-16 h-16 rounded-full bg-vhh-green-100 text-vhh-green-800 flex items-center justify-center mx-auto">
-                  <CheckCircle className="w-10 h-10" />
-                </div>
+              {/* Transfer Narration Helper */}
+              <div className="mt-3 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200 flex items-center justify-between gap-3 text-xs">
                 <div>
-                  <h4 className="font-serif text-2xl font-bold text-vhh-charcoal">
-                    Prototype Contribution Recorded
-                  </h4>
-                  <p className="text-sm text-vhh-muted mt-2 max-w-md mx-auto">
-                    Thank you! This is an interactive presentation prototype for Vine Heritage Home leadership. Official payment keys and bank details will be linked upon board deployment.
-                  </p>
+                  <span className="font-mono text-[10px] uppercase font-bold text-emerald-800 block">
+                    Suggested Narration / Remark:
+                  </span>
+                  <span className="font-mono font-bold text-vhh-green-950">
+                    {currentTag} - [Your Name]
+                  </span>
                 </div>
-
                 <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    onClose();
-                  }}
-                  className="px-6 py-3 rounded-xl bg-vhh-green-800 text-white font-bold text-xs uppercase tracking-wider"
+                  type="button"
+                  onClick={() => copyToClipboard(`${currentTag}`, 'narration')}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-emerald-300 text-emerald-800 text-[11px] font-semibold hover:bg-emerald-100 transition-colors shadow-2xs"
                 >
-                  Return to Website
+                  {copiedField === 'narration' ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy Narration</span>
+                    </>
+                  )}
                 </button>
               </div>
-            )}
+            </div>
+
+            {/* STEP 2: Official Bank Accounts */}
+            <div>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-vhh-green-900 mb-2.5 flex items-center gap-1.5">
+                <Landmark className="w-3.5 h-3.5 text-vhh-green-700" />
+                <span>2. Official Foundation Bank Accounts:</span>
+              </label>
+
+              <div className="space-y-3">
+                {bankAccounts.map((account, index) => (
+                  <div
+                    key={index}
+                    className="p-4 rounded-2xl bg-white border border-stone-200/90 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-vhh-green-600 transition-colors"
+                  >
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-bold text-vhh-green-900">
+                          {account.bankName}
+                        </span>
+                        <span className="text-[10px] font-mono uppercase bg-stone-100 px-2 py-0.5 rounded text-stone-600">
+                          {account.type}
+                        </span>
+                      </div>
+                      
+                      <div className="text-xs text-stone-500 font-medium">
+                        Account Name: <strong className="text-vhh-charcoal">{account.accountName}</strong>
+                      </div>
+
+                      <div className="font-mono text-base font-extrabold text-stone-900 tracking-wider mt-1">
+                        {account.accountNumber}
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => copyToClipboard(account.accountNumber, `acct-${index}`)}
+                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-vhh-green-900 text-white text-xs font-semibold hover:bg-vhh-green-800 transition-colors shadow-xs shrink-0"
+                    >
+                      {copiedField === `acct-${index}` ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-emerald-300" />
+                          <span>Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3.5 h-3.5" />
+                          <span>Copy Account</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* STEP 3: Notify via WhatsApp or Physical Drop-off */}
+            <div className="pt-2 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <a
+                href={`https://wa.me/2349019303646?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] text-white text-xs font-bold hover:bg-[#20bd5a] transition-colors shadow-sm"
+              >
+                <MessageSquare className="w-4 h-4 fill-white" />
+                <span>Notify VHH on WhatsApp</span>
+              </a>
+
+              <div className="flex items-center gap-2 text-[11px] text-stone-500 text-center sm:text-right">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>100% of funds go directly to child sustenance.</span>
+              </div>
+            </div>
+
+            {/* Physical Food / Goods Drop-off Note */}
+            <div className="p-3.5 rounded-xl bg-stone-100 text-stone-600 text-[11px] flex items-start gap-2.5">
+              <MapPin className="w-4 h-4 text-vhh-green-800 shrink-0 mt-0.5" />
+              <div>
+                <strong>Physical Goods Drop-Off:</strong> You can also deliver bags of food, toiletries, or clothes in person to our home at: <span className="font-mono font-semibold text-stone-800">Kuje, Federal Capital Territory, Abuja</span>. Call <span className="font-mono font-semibold">09019303646</span> for assistance.
+              </div>
+            </div>
+
           </div>
+
         </motion.div>
       </div>
     </AnimatePresence>

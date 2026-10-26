@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { VHH_DATA } from '@/data/vhhData';
 import { Menu, X, Heart, Handshake, ShieldAlert, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 interface NavbarProps {
   onOpenSupport: () => void;
@@ -33,44 +34,46 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const mobileLinks = VHH_DATA.mobileNavLinks || VHH_DATA.navLinks;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md py-4 lg:py-5 shadow-md border-b border-stone-200/80'
-          : 'bg-gradient-to-b from-vhh-dark/90 via-vhh-dark/50 to-transparent py-5 lg:py-7 border-b border-white/10'
+          : 'bg-gradient-to-b from-vhh-dark/90 via-vhh-dark/50 to-transparent py-5 lg:py-6 border-b border-white/10'
       }`}
     >
-      <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+      <div className="max-w-[1700px] mx-auto px-6 lg:px-12 2xl:px-16 flex items-center justify-between">
         
-        {/* Brand Logo */}
-        <a href="#hero" className="flex items-center shrink-0">
+        {/* Left Side: Brand Logo with Generous Right Margin */}
+        <Link href="/" className="flex items-center shrink-0 mr-8 lg:mr-12 2xl:mr-16">
           <Logo variant={isScrolled ? 'dark' : 'light'} />
-        </a>
+        </Link>
 
-        {/* Desktop Navigation Links (Spacious Flex Gap) */}
-        <nav className="hidden xl:flex items-center gap-8 xl:gap-10 2xl:gap-12">
+        {/* Center: Desktop Navigation Links (Spacious Flex Gap) */}
+        <nav className="hidden lg:flex items-center gap-8 lg:gap-10 2xl:gap-14">
           {VHH_DATA.navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
-              className={`text-sm font-semibold tracking-wide transition-all duration-200 border-b-2 border-transparent py-2 ${
+              className={`text-sm font-semibold tracking-wide transition-all duration-200 border-b-2 border-transparent py-2 whitespace-nowrap ${
                 isScrolled
                   ? 'text-vhh-charcoal hover:text-vhh-green-800 hover:border-vhh-green-700'
                   : 'text-stone-200 hover:text-white hover:border-emerald-400'
               }`}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        {/* Desktop Action CTAs (Spacious Padding & Gaps) */}
-        <div className="hidden xl:flex items-center gap-4 xl:gap-5 shrink-0">
+        {/* Right Side: Desktop Action CTAs */}
+        <div className="hidden lg:flex items-center gap-4 2xl:gap-6 shrink-0 ml-auto lg:ml-8">
           {/* Secondary CTA: Partner */}
           <button
             onClick={onOpenVolunteer}
-            className={`px-5 py-3 rounded-xl text-xs xl:text-sm font-bold tracking-wider uppercase transition-all border ${
+            className={`px-5 py-2.5 rounded-xl text-xs xl:text-sm font-bold tracking-wider uppercase transition-all border whitespace-nowrap ${
               isScrolled
                 ? 'border-vhh-green-800 text-vhh-green-900 hover:bg-vhh-green-50'
                 : 'border-white/40 text-stone-100 hover:bg-white/15'
@@ -82,16 +85,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Primary CTA: Support */}
           <button
             onClick={onOpenSupport}
-            className="px-6 xl:px-7 py-3 rounded-xl text-xs xl:text-sm font-bold tracking-wider uppercase bg-vhh-green-800 text-white shadow-md hover:bg-vhh-green-700 transition-all flex items-center gap-2.5 group border border-vhh-green-600/40"
+            className="px-6 py-2.5 rounded-xl text-xs xl:text-sm font-bold tracking-wider uppercase bg-vhh-green-800 text-white shadow-md hover:bg-vhh-green-700 transition-all flex items-center gap-2.5 group border border-vhh-green-600/40 whitespace-nowrap"
           >
             <Heart className="w-4 h-4 text-vhh-red-500 fill-vhh-red-500 transition-transform group-hover:scale-110" />
             <span>Support Our Mission</span>
           </button>
         </div>
 
-        {/* Medium Screen (Tablet/Laptop) Compact Action & Mobile Hamburger */}
-        <div className="flex items-center gap-3 xl:hidden">
-          {/* Compact Support Button on Medium Screens */}
+        {/* Mobile / Tablet Compact Actions */}
+        <div className="flex items-center gap-3 lg:hidden">
           <button
             onClick={onOpenSupport}
             className="hidden sm:flex px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-vhh-green-800 text-white shadow-sm hover:bg-vhh-green-700 items-center gap-1.5"
@@ -100,7 +102,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>Support</span>
           </button>
 
-          {/* Mobile/Tablet Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className={`p-3 rounded-xl transition-all border ${
@@ -118,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Refined Mobile & Tablet Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden fixed inset-x-0 top-[75px] sm:top-[85px] bg-vhh-dark/98 backdrop-blur-2xl border-b border-vhh-green-800/50 px-8 py-8 shadow-2xl flex flex-col gap-6 animate-in slide-in-from-top-4 duration-300 max-h-[calc(100vh-85px)] overflow-y-auto">
+        <div className="lg:hidden fixed inset-x-0 top-[75px] sm:top-[85px] bg-vhh-dark/98 backdrop-blur-2xl border-b border-vhh-green-800/50 px-8 py-8 shadow-2xl flex flex-col gap-6 animate-in slide-in-from-top-4 duration-300 max-h-[calc(100vh-85px)] overflow-y-auto">
           
           <div className="flex items-center justify-between pb-4 border-b border-vhh-green-900/80 text-xs text-stone-400 font-mono">
             <span>VHH NAVIGATION MENU</span>
@@ -126,8 +127,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <nav className="flex flex-col gap-2">
-            {VHH_DATA.navLinks.map((link) => (
-              <a
+            {mobileLinks.map((link) => (
+              <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
@@ -135,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 <span>{link.name}</span>
                 <ChevronRight className="w-4 h-4 text-stone-500" />
-              </a>
+              </Link>
             ))}
           </nav>
 
