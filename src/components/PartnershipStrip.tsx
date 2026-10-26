@@ -106,33 +106,23 @@ export const PartnershipStrip: React.FC = () => {
     }
   ];
 
-  // Repeat for continuous linear loop
-  const marqueeList = [...partners, ...partners];
+  // 4 sets for mathematically seamless -50% loop on any screen width
+  const marqueeList = [...partners, ...partners, ...partners, ...partners];
 
   return (
     <div 
       aria-label="Institutional Partner Logos" 
       className="w-full bg-[#f6f4ee] border-y border-stone-200/90 py-3 relative overflow-hidden select-none pause-on-hover"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-row items-center gap-4 sm:gap-6 flex-nowrap">
+      {/* Full-width Marquee Viewport with Soft Edge Fades */}
+      <div className="relative w-full overflow-hidden flex items-center min-h-[52px]">
         
-        {/* Left Fixed Label Pill */}
-        <div className="shrink-0 flex items-center gap-2 z-20 bg-[#f6f4ee] pr-3 border-r border-stone-300/80">
-          <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse shrink-0" />
-          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-stone-600 whitespace-nowrap">
-            Partners & Validations
-          </span>
-        </div>
+        {/* Edge Fade Gradients */}
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#f6f4ee] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#f6f4ee] to-transparent z-10 pointer-events-none" />
 
-        {/* Marquee Viewport: strictly single straight horizontal line */}
-        <div className="relative w-full overflow-hidden flex items-center min-h-[50px]">
-          
-          {/* Edge Fade Gradients */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-12 bg-gradient-to-r from-[#f6f4ee] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-12 bg-gradient-to-l from-[#f6f4ee] to-transparent z-10 pointer-events-none" />
-
-          {/* Scrolling Track: Strictly flex-row, flex-nowrap, whitespace-nowrap */}
-          <div className="animate-marquee flex flex-row flex-nowrap items-center gap-6 sm:gap-8 whitespace-nowrap py-1">
+        {/* Scrolling Track: Strictly single continuous horizontal line */}
+        <div className="animate-marquee flex flex-row flex-nowrap items-center gap-6 sm:gap-10 whitespace-nowrap py-1 px-4">
             {marqueeList.map((partner, index) => {
               const isCurrentHovered = hoveredIndex === index;
 
@@ -198,10 +188,7 @@ export const PartnershipStrip: React.FC = () => {
               );
             })}
           </div>
-
         </div>
-
       </div>
-    </div>
-  );
-};
+    );
+  };

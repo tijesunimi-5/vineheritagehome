@@ -107,7 +107,7 @@ export const HowToHelpSection: React.FC<HowToHelpSectionProps> = ({ onDonate }) 
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-vhh-green-900/10 text-vhh-green-900 text-xs font-mono font-bold uppercase tracking-wider mb-3">
               <Heart className="w-3.5 h-3.5 text-vhh-green-800" />
-              <span>Section 03 &bull; How You Can Help</span>
+              <span>How You Can Help</span>
             </div>
             
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-vhh-charcoal leading-tight">
@@ -166,8 +166,8 @@ export const HowToHelpSection: React.FC<HowToHelpSectionProps> = ({ onDonate }) 
                     : 'lg:flex-1 hover:shadow-md'
                 }`}
               >
-                {/* Visual Image Header */}
-                <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-stone-100">
+                {/* Visual Image Header: Rich, clear framing on mobile & desktop */}
+                <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-stone-100">
                   <img
                     src={pillar.imageUrl}
                     alt={pillar.title}

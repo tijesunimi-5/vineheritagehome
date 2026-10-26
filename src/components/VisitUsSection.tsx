@@ -58,8 +58,8 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
       label: "Exterior & Grounds",
       title: "The Home & Residential Grounds",
       desc: "Tranquil, secure environment in Kuje Abuja with green lawns and open space for 239 children to play and rest safely.",
-      placeholderTag: "PHOTO PLACEHOLDER 01 — HOUSE EXTERIOR & GROUNDS",
-      imageUrl: "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=85&w=1600&auto=format&fit=crop",
+      placeholderTag: "VERIFIED SANCTUARY GROUNDS — KUJE ABUJA",
+      imageUrl: "/vine-home.jpg",
       features: ["Solar Inverter Power", "Clean Borehole Water", "Gated Security"]
     },
     {
@@ -114,7 +114,7 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-vhh-green-900/10 text-vhh-green-900 text-xs font-mono font-bold uppercase tracking-wider mb-3">
             <Compass className="w-3.5 h-3.5 text-vhh-green-800" />
-            <span>Section 04 &bull; Come and Visit Us</span>
+            <span>Come and Visit Us</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-vhh-charcoal leading-tight">
@@ -179,7 +179,7 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
         <div className="rounded-3xl bg-white border border-stone-200 shadow-md overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0">
           
           {/* LEFT: Multi-Photo Interactive House Switcher */}
-          <div className="lg:col-span-5 relative bg-stone-900 min-h-[380px] sm:min-h-[460px] flex flex-col justify-between p-6 sm:p-8 text-white">
+          <div className="lg:col-span-5 relative bg-stone-900 min-h-[420px] sm:min-h-[480px] flex flex-col justify-between p-6 sm:p-8 text-white">
             
             {/* Background Image with Smooth Crossfade */}
             <AnimatePresence mode="wait">

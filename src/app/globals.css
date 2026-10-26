@@ -89,13 +89,16 @@ body.highlight-placeholders .vhh-placeholder-tag {
   flex-wrap: nowrap !important;
   width: max-content !important;
   white-space: nowrap !important;
-  animation: marqueeScroll 28s linear infinite;
+  animation: marqueeScroll 32s linear infinite;
   will-change: transform;
 }
 
-.animate-marquee:hover,
-.pause-on-hover:hover .animate-marquee {
-  animation-play-state: paused !important;
+/* Only pause on hover on devices with true mouse/pointer hover so mobile touch never freezes animation */
+@media (hover: hover) and (pointer: fine) {
+  .animate-marquee:hover,
+  .pause-on-hover:hover .animate-marquee {
+    animation-play-state: paused !important;
+  }
 }
 
 

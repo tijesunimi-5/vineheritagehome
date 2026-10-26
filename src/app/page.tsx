@@ -33,14 +33,14 @@ export default function Home() {
       <PartnershipStrip />
 
       {/* 
-        SECTION 02 — WHO WE ARE & WHY WE EXIST:
+        WHO WE ARE & WHY WE EXIST:
         Human, editorial introduction answering what VHH is, why it was founded,
         the 239 children in care, and clear gateways to our full story and home.
       */}
       <WhoWeAreSection />
 
       {/* 
-        SECTION 03 — HOW YOU CAN HELP:
+        HOW YOU CAN HELP:
         Categorized actionable giving preview (Food, School Fees, Healthcare, Essentials)
         with stacked horizontal hover spread on desktop and vertical clarity on mobile.
       */}
@@ -49,7 +49,7 @@ export default function Home() {
       />
 
       {/* 
-        SECTION 04 — COME AND VISIT US:
+        COME AND VISIT US:
         Invitation to spend time, teach mentorship skills (Tech, Business, Art, Health),
         host cinema/sports days, with building photo showcase and detailed Google Maps in Kuje.
       */}
