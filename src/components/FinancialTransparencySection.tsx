@@ -129,7 +129,7 @@ export const FinancialTransparencySection: React.FC<FinancialTransparencySection
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-vhh-green-900/10 text-vhh-green-900 text-xs font-mono font-bold uppercase tracking-wider mb-3">
             <ShieldCheck className="w-3.5 h-3.5 text-vhh-green-800" />
-            <span>Section 05 &bull; Radical Financial Stewardship</span>
+            <span>Radical Financial Stewardship &bull; Direct Giving</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-vhh-charcoal leading-tight">
