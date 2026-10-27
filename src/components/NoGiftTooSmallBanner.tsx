@@ -10,8 +10,9 @@ interface NoGiftTooSmallBannerProps {
 export const NoGiftTooSmallBanner: React.FC<NoGiftTooSmallBannerProps> = ({ onOpenSupport }) => {
   return (
     <section 
+      id="no-gift-too-small"
       aria-label="No Gift is Too Small Assurance" 
-      className="relative -mt-6 sm:-mt-8 z-20 max-w-6xl mx-auto px-4 sm:px-8"
+      className="relative -mt-6 sm:-mt-8 z-20 max-w-6xl mx-auto px-4 sm:px-8 scroll-mt-24"
     >
       <div className="bg-white rounded-3xl border border-stone-200/90 shadow-lg p-6 sm:p-8 lg:p-10 relative overflow-hidden">
         

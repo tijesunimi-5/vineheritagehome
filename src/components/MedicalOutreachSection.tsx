@@ -90,7 +90,7 @@ export const MedicalOutreachSection: React.FC<MedicalOutreachSectionProps> = ({ 
     <section 
       id="medical-outreach" 
       aria-label="Medical Outreaches, Doctor Partnerships and Hospital Retainerships"
-      className="py-16 sm:py-24 bg-[#0c1f17] text-white relative overflow-hidden border-t border-b border-emerald-900/40"
+      className="py-16 sm:py-24 bg-[#0c1f17] text-white relative overflow-hidden border-t border-b border-emerald-900/40 scroll-mt-20"
     >
       {/* Background Ambience */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />

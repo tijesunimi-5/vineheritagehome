@@ -76,7 +76,7 @@ export const BrandPartnershipSection: React.FC = () => {
     <section 
       id="brand-partnerships" 
       aria-label="Brand and Corporate Product Partnerships"
-      className="py-16 sm:py-24 bg-[#0e2119] text-white relative overflow-hidden"
+      className="py-16 sm:py-24 bg-[#0e2119] text-white relative overflow-hidden scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-10 lg:px-16">
         

@@ -121,7 +121,7 @@ export const FinancialTransparencySection: React.FC<FinancialTransparencySection
     <section
       id="transparency"
       aria-label="Financial Stewardship and Direct Giving"
-      className="py-20 sm:py-28 bg-[#f5f2ea] text-vhh-charcoal relative overflow-hidden border-t border-stone-200/90"
+      className="py-20 sm:py-28 bg-[#f5f2ea] text-vhh-charcoal relative overflow-hidden border-t border-stone-200/90 scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
         

@@ -59,7 +59,7 @@ export const LogisticsDeliveryGuide: React.FC = () => {
     <section 
       id="logistics-guide" 
       aria-label="How to Send Physical Goods via Logistics"
-      className="py-16 sm:py-20 bg-white text-vhh-charcoal border-b border-stone-200"
+      className="py-16 sm:py-20 bg-white text-vhh-charcoal border-b border-stone-200 scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-10 lg:px-16">
         

@@ -617,7 +617,7 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
     <section 
       id="needs-directory" 
       aria-label="Itemized Needs Directory by Category"
-      className="py-16 sm:py-24 bg-[#fdfbf7] text-vhh-charcoal relative overflow-hidden"
+      className="py-16 sm:py-24 bg-[#fdfbf7] text-vhh-charcoal relative overflow-hidden scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-10 lg:px-16">
         

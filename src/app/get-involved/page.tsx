@@ -9,6 +9,7 @@ import { NeedsDirectory } from '@/components/NeedsDirectory';
 import { MedicalOutreachSection } from '@/components/MedicalOutreachSection';
 import { BrandPartnershipSection } from '@/components/BrandPartnershipSection';
 import { FinancialTransparencySection } from '@/components/FinancialTransparencySection';
+import { SupportFloatingNav } from '@/components/SupportFloatingNav';
 import { SupportModal } from '@/components/SupportModal';
 import { VolunteerModal } from '@/components/VolunteerModal';
 import { 
@@ -46,10 +47,22 @@ export default function GetInvolvedPage() {
         onOpenVolunteer={() => setVolunteerModalOpen(true)}
       />
 
+      {/* 
+        VERTICAL FLOATING LONG-HEIGHT QUICK ACCESS PANEL:
+        Provides instant, silky smooth navigation across all sections (Food, Healthcare,
+        School fees, Logistics, Brand partnerships, and Direct giving).
+      */}
+      <SupportFloatingNav 
+        onOpenSupport={() => setSupportModalOpen(true)}
+      />
+
       {/* ========================================================================= */}
       {/* EDITORIAL HERO SECTION                                                    */}
       {/* ========================================================================= */}
-      <section className="pt-32 sm:pt-36 pb-20 sm:pb-24 bg-gradient-to-b from-vhh-dark via-vhh-dark/95 to-[#0f241c] text-white px-5 sm:px-10 lg:px-16 border-b border-white/10 relative overflow-hidden">
+      <section 
+        id="overview"
+        className="pt-32 sm:pt-36 pb-20 sm:pb-24 bg-gradient-to-b from-vhh-dark via-vhh-dark/95 to-[#0f241c] text-white px-5 sm:px-10 lg:px-16 border-b border-white/10 relative overflow-hidden scroll-mt-20"
+      >
         
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(#1a5342_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
