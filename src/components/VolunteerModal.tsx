@@ -16,7 +16,7 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
     name: '',
     email: '',
     organization: '',
-    type: 'Corporate Partnership',
+    type: 'Celebrate Birthday / Milestone With Children',
     message: ''
   });
 
@@ -29,7 +29,7 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-vhh-dark/80 backdrop-blur-md overflow-y-auto">
+      <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-vhh-dark/80 backdrop-blur-md overflow-y-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -109,11 +109,13 @@ export const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose 
                     onChange={(e) => setFormData({ ...formData, type: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-vhh-green-700 focus:outline-none bg-white font-medium"
                   >
-                    <option>Corporate Partnership</option>
-                    <option>NGO & Humanitarian Collaboration</option>
-                    <option>Volunteer Skill Contribution</option>
-                    <option>In-Kind Item Donation</option>
-                    <option>Schedule Official Campus Visit</option>
+                    <option>Celebrate Birthday / Milestone With Children</option>
+                    <option>Educate & Mentor (Life Skills, Finance, Tech, Rights)</option>
+                    <option>Play Games, Sports & Cinema Day</option>
+                    <option>Schedule Weekend or Holiday Visit to Sanctuary (Kuje)</option>
+                    <option>Medical Outreach / Healthcare Support</option>
+                    <option>Corporate CSR & Product Partnership</option>
+                    <option>In-Kind Goods / Logistics Delivery</option>
                   </select>
                 </div>
 

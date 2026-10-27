@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { VHH_DATA } from '@/data/vhhData';
 import { CampusMasterplanPreview } from './CampusMasterplanPreview';
-import { Home, Hammer, Sparkles, Image as ImageIcon } from 'lucide-react';
+import { Home, Hammer, ShieldCheck, Image as ImageIcon } from 'lucide-react';
 
 export const OurHome: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ export const OurHome: React.FC = () => {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-vhh-green-100 text-vhh-green-900 text-xs font-semibold uppercase tracking-wider mb-4">
             <Home className="w-3.5 h-3.5 text-vhh-green-700" />
-            <span>Physical Campus & Living Environment</span>
+            <span>Physical Sanctuary &amp; Living Environment</span>
           </div>
 
           <h2 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-vhh-charcoal leading-tight">
@@ -85,16 +85,16 @@ export const OurHome: React.FC = () => {
         <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-vhh-green-900 to-vhh-green-800 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 mb-16">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-4 border border-emerald-700">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
               <span>Growing With Purpose</span>
             </div>
 
             <h3 className="font-serif text-3xl sm:text-4xl font-bold leading-snug">
-              Continuous Campus Expansion & Facility Upgrades
+              Continuous Sanctuary Expansion &amp; Facility Upgrades
             </h3>
 
             <p className="mt-4 text-sm sm:text-base text-stone-200 font-light leading-relaxed">
-              Vine Heritage Home is actively developing its physical campus to expand intake capacity, construct dedicated STEM learning centers, and improve living accommodations. We view development not as a deficit, but as evidence of continuous progress and dynamic growth.
+              Vine Heritage Home is actively developing its sanctuary grounds in Kuje, Abuja to expand intake capacity, construct dedicated learning centers, and improve living accommodations. We view development not as a deficit, but as evidence of continuous progress and dynamic growth.
             </p>
           </div>
 

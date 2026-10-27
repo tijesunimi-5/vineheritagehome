@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Layers, MapPin, Eye, Box, Compass, Sparkles, Building2, CheckCircle2 } from 'lucide-react';
+import { Layers, MapPin, Eye, Box, Compass, Building2, CheckCircle2 } from 'lucide-react';
 import { PlaceholderBadge } from './PlaceholderBadge';
 
 export const CampusMasterplanPreview: React.FC = () => {
@@ -51,15 +51,15 @@ export const CampusMasterplanPreview: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/80 border border-emerald-600/50 text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-3">
               <Box className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Campus Blueprint & Masterplan</span>
+              <span>Sanctuary Blueprint & Masterplan</span>
               <span className="text-stone-400">&bull;</span>
-              <span className="text-amber-300 font-mono text-[11px]">Future 3D Interactive Ready</span>
+              <span className="text-amber-300 font-mono text-[11px]">Kuje, Abuja</span>
             </div>
             <h3 className="font-serif text-3xl font-bold text-stone-100">
-              Explore Our Physical Campus Layout
+              Explore Our Physical Sanctuary Layout
             </h3>
             <p className="text-sm text-stone-300 mt-1 font-light">
-              Click through the campus sectors to view current facilities and ongoing development projects.
+              Click through the sanctuary sectors to view current facilities and ongoing development projects.
             </p>
           </div>
 
@@ -74,7 +74,7 @@ export const CampusMasterplanPreview: React.FC = () => {
           {/* Left: Zone Selection Tabs */}
           <div className="lg:col-span-5 flex flex-col gap-3">
             <p className="text-xs uppercase tracking-widest text-emerald-400 font-bold mb-1">
-              Select Campus Sector:
+              Select Sanctuary Sector:
             </p>
             {zones.map((zone, idx) => {
               const isSelected = selectedZone === idx;
@@ -115,7 +115,7 @@ export const CampusMasterplanPreview: React.FC = () => {
                   SECTOR 0{selectedZone + 1} &bull; {zones[selectedZone].status}
                 </span>
                 <div className="flex items-center gap-1.5 text-xs text-amber-300 font-medium">
-                  <Sparkles className="w-4 h-4" />
+                  <Building2 className="w-4 h-4 text-emerald-400" />
                   <span>Interactive Blueprint Preview</span>
                 </div>
               </div>

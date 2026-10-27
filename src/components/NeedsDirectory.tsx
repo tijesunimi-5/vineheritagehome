@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { 
   Baby, 
@@ -35,6 +35,26 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
   const shouldReduceMotion = useReducedMotion();
   const [activeCategory, setActiveCategory] = useState<string>("food");
   const [copiedItemId, setCopiedItemId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleHashChange = () => {
+        const hash = window.location.hash.replace('#', '').toLowerCase();
+        if (hash === 'nutrition' || hash === 'food') setActiveCategory('food');
+        else if (hash === 'education' || hash === 'school') setActiveCategory('education');
+        else if (hash === 'health' || hash === 'healthcare' || hash === 'medical') setActiveCategory('health');
+        else if (hash === 'facility' || hash === 'cooling' || hash === 'essentials') setActiveCategory('facility');
+        else if (hash === 'transit' || hash === 'bus') setActiveCategory('transit');
+        else if (hash === 'newborns' || hash === 'infants') setActiveCategory('newborns');
+        else if (hash === 'toddlers') setActiveCategory('toddlers');
+        else if (hash === 'teens') setActiveCategory('teens');
+      };
+
+      handleHashChange();
+      window.addEventListener('hashchange', handleHashChange);
+      return () => window.removeEventListener('hashchange', handleHashChange);
+    }
+  }, []);
 
   const categories = [
     {
@@ -215,6 +235,14 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
           urgency: "Daily School Nourishment",
           details: "Ensures children take clean, filtered water and packed mid-day lunches to school each morning.",
           transferTag: "VHH LUNCH FLASKS"
+        },
+        {
+          id: "ed-rights",
+          name: "Security Awareness, Self-Defense & Rights Education",
+          specs: "Workshops in situational awareness, personal safety, legal rights & self-defense",
+          urgency: "Empowerment & Life Smarts",
+          details: "We are not just an orphanage — we empower our children to live smart, recognize danger, know their constitutional and human rights, and navigate society with confidence.",
+          transferTag: "VHH RIGHTS & SAFETY"
         }
       ]
     },
@@ -307,6 +335,22 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
           urgency: "Scalp Infection Prevention",
           details: "Sterilizing clippers and combs before every haircut ensures our 239 children remain safe from ringworm, fungal scalp infections, and communicable skin issues.",
           transferTag: "VHH BARBER STERILIZER"
+        },
+        {
+          id: "fc-cctv",
+          name: "Smart Wireless/IP CCTV Security Camera System",
+          specs: "High-definition smart CCTV outdoor cameras, night vision, NVR storage & remote monitor",
+          urgency: "24/7 Compound Safety & Monitoring",
+          details: "Digital security surveillance covering perimeter fences, main entrance gates, dining halls, and grounds to safeguard 239 children day and night.",
+          transferTag: "VHH CCTV SECURITY"
+        },
+        {
+          id: "fc-internet",
+          name: "Stable High-Speed Broadband Internet Subscription",
+          specs: "Unlimited high-speed broadband router (Starlink / Fiber / 4G LTE) monthly subscription",
+          urgency: "Digital Learning & Connectivity",
+          details: "Powers online homework research, computer programming, digital literacy, school assignments, and compound security system connectivity.",
+          transferTag: "VHH INTERNET"
         },
         {
           id: "fc-fans",

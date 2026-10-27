@@ -74,7 +74,7 @@ export const SupportModal: React.FC<SupportModalProps> = ({
   return (
     <AnimatePresence>
       <div 
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-stone-950/80 backdrop-blur-sm overflow-y-auto"
+        className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6 bg-stone-950/80 backdrop-blur-sm overflow-y-auto"
         onClick={onClose}
       >
         <motion.div

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { PartnershipStrip } from '@/components/PartnershipStrip';
 import { WhoWeAreSection } from '@/components/WhoWeAreSection';
@@ -17,6 +18,16 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-vhh-dark relative selection:bg-vhh-green-700 selection:text-white overflow-x-hidden">
+      {/* 
+        GLOBAL TOP NAVBAR:
+        Fixed desktop & mobile navigation connecting all 7 core pages,
+        direct support modal, and visit booking drawer.
+      */}
+      <Navbar
+        onOpenSupport={() => setSupportModalOpen(true)}
+        onOpenVolunteer={() => setVisitModalOpen(true)}
+      />
+
       {/* 
         HERO SECTION:
         Full-width, art-directed editorial hero with authentic documentary photography,

@@ -4,7 +4,6 @@ import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Calendar } from 'lucide-react';
 import Link from 'next/link';
-import { Logo } from './Logo';
 
 interface HeroProps {
   onPlanVisit?: () => void;
@@ -68,31 +67,11 @@ export const Hero: React.FC<HeroProps> = ({ onPlanVisit, onOurStory }) => {
       </div>
 
       {/* 
-        TOP BRAND BAR
-        Quiet, unhurried, and refined. Establishes institutional credibility 
-        without noisy buttons or cluttered navigation.
-      */}
-      <div className="relative z-20 w-full pt-8 sm:pt-10 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto flex items-center justify-between">
-        <Link 
-          href="/" 
-          className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-vhh-dark rounded-lg"
-          aria-label="Vine Heritage Home Home"
-        >
-          <Logo variant="light" />
-        </Link>
-
-        <div className="text-xs tracking-wider uppercase font-sans text-stone-300/80 font-medium hidden sm:flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
-          <span>Abuja, Nigeria &bull; Humanitarian Sanctuary</span>
-        </div>
-      </div>
-
-      {/* 
         MAIN EDITORIAL CONTENT
         Carefully proportioned visual hierarchy with generous whitespace.
-        The message does the heavy lifting: direct, emotionally resonant, and dignified.
+        Positioned below the fixed navigation bar with pristine editorial balance.
       */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 py-12 sm:py-20 my-auto">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 pt-32 sm:pt-40 lg:pt-44 pb-16 sm:pb-20 my-auto">
         <div className="max-w-2xl lg:max-w-3xl">
           
           {/* Subtle Institutional Kicker */}

@@ -121,6 +121,7 @@ export const VHH_DATA = {
     { name: "Our Story", href: "/our-story" },
     { name: "Explore Home", href: "/our-home" },
     { name: "Programs", href: "/programs" },
+    { name: "Impact", href: "/impact" },
     { name: "How to Help", href: "/get-involved" },
     { name: "Visit Us", href: "/contact" },
   ],

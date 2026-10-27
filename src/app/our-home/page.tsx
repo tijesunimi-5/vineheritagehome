@@ -31,11 +31,11 @@ export default function OurHomePage() {
           </Link>
 
           <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-stone-100">
-            Physical Campus & Masterplan
+            Physical Sanctuary &amp; Living Grounds
           </h1>
 
           <p className="mt-4 text-lg text-stone-300 font-light max-w-2xl mx-auto">
-            Detailed view of our residential quarters, study halls, dining, playgrounds, and expansion zones.
+            Detailed view of our residential quarters, study halls, dining, playgrounds, and expansion zones in Kuje, Abuja.
           </p>
         </div>
       </div>

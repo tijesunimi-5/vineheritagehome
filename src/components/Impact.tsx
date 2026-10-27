@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { VHH_DATA } from '@/data/vhhData';
 import { PlaceholderBadge } from './PlaceholderBadge';
-import { BarChart3, Clock, Sparkles, AlertCircle } from 'lucide-react';
+import { BarChart3, Clock, Compass, AlertCircle } from 'lucide-react';
 
 export const Impact: React.FC = () => {
   return (
@@ -102,7 +102,7 @@ export const Impact: React.FC = () => {
 
             <div className="p-5 rounded-2xl bg-vhh-green-950 border border-vhh-green-800">
               <PlaceholderBadge text="[MAJOR DEVELOPMENT]" className="mb-2" />
-              <h4 className="font-serif font-bold text-white text-base">Campus Construction</h4>
+              <h4 className="font-serif font-bold text-white text-base">Sanctuary Construction</h4>
               <p className="text-xs text-stone-300 mt-2">Building dedicated dormitories, study halls, and play facilities.</p>
             </div>
 
@@ -114,7 +114,7 @@ export const Impact: React.FC = () => {
 
             <div className="p-5 rounded-2xl bg-vhh-green-950 border border-emerald-500/40">
               <div className="inline-flex items-center gap-1 text-emerald-300 text-xs font-bold mb-2">
-                <Sparkles className="w-3.5 h-3.5" />
+                <Compass className="w-3.5 h-3.5" />
                 <span>[FUTURE VISION]</span>
               </div>
               <h4 className="font-serif font-bold text-white text-base">Expansion Horizon</h4>

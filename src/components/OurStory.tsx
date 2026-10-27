@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { VHH_DATA } from '@/data/vhhData';
 import { PlaceholderBadge } from './PlaceholderBadge';
-import { ShieldAlert, BookOpen, ChevronDown, ChevronRight, FileText, CheckCircle2, Sparkles } from 'lucide-react';
+import { ShieldAlert, BookOpen, ChevronDown, ChevronRight, FileText, CheckCircle2 } from 'lucide-react';
 
 export const OurStory: React.FC = () => {
   const [activeMilestone, setActiveMilestone] = useState(0);
@@ -63,7 +63,7 @@ export const OurStory: React.FC = () => {
         {/* ========================================================================= */}
         <div className="lg:hidden space-y-4 mb-12">
           <p className="text-xs font-mono text-vhh-green-800 font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-vhh-green-700" />
+            <BookOpen className="w-3.5 h-3.5 text-vhh-green-700" />
             <span>Tap any timeline step below to read full story:</span>
           </p>
 
@@ -164,7 +164,7 @@ export const OurStory: React.FC = () => {
           {/* Left Column: Interactive Milestone Navigation */}
           <div className="col-span-5 flex flex-col gap-4">
             <p className="text-xs font-mono text-vhh-green-800 font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-vhh-green-700" />
+              <BookOpen className="w-3.5 h-3.5 text-vhh-green-700" />
               <span>Select step below to switch main story view:</span>
             </p>
 

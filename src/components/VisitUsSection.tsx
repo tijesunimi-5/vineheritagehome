@@ -8,12 +8,18 @@ import {
   Clock, 
   ExternalLink, 
   MessageSquare, 
-  Film, 
+  Cake, 
   BookOpen, 
-  HeartHandshake, 
+  Gamepad2, 
+  Film,
   Navigation,
   Compass,
-  Camera
+  Camera,
+  Heart,
+  Smile,
+  Phone,
+  ShieldCheck,
+  CheckCircle2
 } from 'lucide-react';
 
 interface VisitUsSectionProps {
@@ -26,27 +32,35 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
 
   const engagementPillars = [
     {
+      icon: Cake,
+      title: "Celebrate Your Big Day With Us",
+      subtitle: "Birthdays, Milestones & Anniversaries",
+      description: "Celebrate your birthday, wedding anniversary, promotion, graduation, or family milestone with our 239 lively children! Share refreshments, cake, dance, play music, and create memories that our children will cherish for months.",
+      tag: "Celebrations & Joy",
+      badgeColor: "bg-rose-100 text-rose-900 border-rose-200"
+    },
+    {
       icon: BookOpen,
-      title: "Educate & Mentor Our Children",
-      subtitle: "Share Your Real-World Skills",
-      description: "Visiting mentors and professionals are invited to run interactive extracurricular life skill sessions in Tech & Digital Skills, Financial Literacy, Business, Character & Relationships, Health Emergency Safety, and Creative Arts & Music.",
-      tag: "Skills & Education",
+      title: "Educate, Inspire & Mentor",
+      subtitle: "Life Skills, Finance & Knowing Your Rights",
+      description: "You have real-world knowledge that can transform young lives! Run interactive sessions in Financial Literacy, Tech & Coding, Career Mentorship, Creative Arts, and Personal Rights & Safety Awareness.",
+      tag: "Skills & Mentorship",
       badgeColor: "bg-emerald-100 text-emerald-900 border-emerald-200"
     },
     {
-      icon: Film,
-      title: "Cinema & Sports Days",
-      subtitle: "Bring Moments of Pure Joy",
-      description: "Sponsor or host a joyful Movie Screening (Cinema Day) afternoon with snacks for all 239 children, or organize weekend football matches, relay athletics, and board games on our grounds.",
-      tag: "Recreation & Joy",
+      icon: Gamepad2,
+      title: "Play Games & Have Pure Fun",
+      subtitle: "Sports, Board Games & Outdoor Play",
+      description: "Host weekend football matches on our green grounds, board games (Scrabble, Chess, Monopoly), relay races, skipping, and playground games. We love having fun around our visitors and laughing together!",
+      tag: "Recreation & Energy",
       badgeColor: "bg-amber-100 text-amber-900 border-amber-200"
     },
     {
-      icon: HeartHandshake,
-      title: "Ground & Home Care",
-      subtitle: "Lend a Helping Hand",
-      description: "Join our dedicated caregivers for a hands-on service day helping clean, landscape, and care for the residential grounds, garden, and common rooms.",
-      tag: "Hands-on Service",
+      icon: Film,
+      title: "Cinema Days & Fellowship",
+      subtitle: "Movie Screenings & Heartfelt Connection",
+      description: "Sponsor or host a weekend Movie Screening afternoon with popcorn, juice, and biscuits, or simply sit down with the children for heartfelt conversations and story sharing.",
+      tag: "Fellowship & Love",
       badgeColor: "bg-blue-100 text-blue-900 border-blue-200"
     }
   ];
@@ -60,7 +74,7 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
       desc: "Tranquil, secure environment in Kuje Abuja with green lawns and open space for 239 children to play and rest safely.",
       placeholderTag: "VERIFIED SANCTUARY GROUNDS — KUJE ABUJA",
       imageUrl: "/vine-home.jpg",
-      features: ["Solar Inverter Power", "Clean Borehole Water", "Gated Security"]
+      features: ["Solar Inverter Power", "Clean Borehole Water", "Gated Security & CCTV"]
     },
     {
       id: "living",
@@ -85,7 +99,7 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
       label: "Dining & Kitchen",
       title: "Family Dining Hall & Kitchen",
       desc: "Where 3 hot, freshly cooked, nutritious meals are prepared and served daily for all 239 growing children.",
-      placeholderTag: "PHOTO PLACEHOLDER 04 — DINING & COMMAL MEALS",
+      placeholderTag: "PHOTO PLACEHOLDER 04 — DINING & COMMUNAL MEALS",
       imageUrl: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=85&w=1600&auto=format&fit=crop",
       features: ["3 Nutritious Meals Daily", "Communal Seating", "Fresh Pantry Staples"]
     }
@@ -99,7 +113,7 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
   const embedMapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(locationQuery)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
   const whatsappMessage = encodeURIComponent(
-    "Hello Vine Heritage Home, I would like to schedule a visit / mentorship session for the children at your home in Kuje, Abuja. Kindly provide visitor guidance. Thank you!"
+    "Hello Vine Heritage Home, I would like to schedule a visit / birthday celebration / mentorship session for the children at your home in Kuje, Abuja. Kindly provide visiting guidelines. Thank you!"
   );
 
   return (
@@ -114,23 +128,57 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-vhh-green-900/10 text-vhh-green-900 text-xs font-mono font-bold uppercase tracking-wider mb-3">
             <Compass className="w-3.5 h-3.5 text-vhh-green-800" />
-            <span>Come and Visit Us</span>
+            <span>Come and Visit Us &bull; You Are Welcomed</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-vhh-charcoal leading-tight">
             Spend Time With Our Family. <br />
             <span className="italic font-normal text-vhh-green-800">
-              Discover Vine Heritage Home For Yourself.
+              Your Presence Alone Changes Mindsets.
             </span>
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-stone-600 font-light leading-relaxed">
-            We warmly welcome prospective supporters, professionals, mentors, and groups to our home in Kuje, Abuja. Your physical presence, encouragement, and time mean the world to our <strong>239 children</strong>.
+            We are lively, energetic, and welcoming. We love having fun around our visitors, playing games, learning from you, and being impacted by your life experience. We are ready and eager to receive you!
           </p>
         </div>
 
-        {/* 3 Ways to Engage Grid (from handwritten draft) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        {/* ========================================================================= */}
+        {/* WARM VISITOR ETHOS CALLOUT: YOU DON'T NEED A BIG GIFT                      */}
+        {/* ========================================================================= */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-950 via-vhh-dark to-[#0f241c] text-white border border-emerald-800/40 shadow-md mb-14 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-[11px] font-mono font-semibold uppercase text-emerald-300 border border-white/15">
+                <Heart className="w-3.5 h-3.5 text-rose-400 fill-rose-400" />
+                <span>Our Visitor Promise &bull; Every Person Matters</span>
+              </div>
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-white">
+                You Don&rsquo;t Have to Come With Big Gifts. <span className="text-emerald-300 font-normal italic">Your Presence Is The Gift.</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-300 font-light leading-relaxed">
+                Please never let the feeling of having to buy large gifts hold you back. Your unique presence, listening ear, and warm smile have the rare ability to inspire our children, reshape mindsets, and spark dreams for the future. Whether you come to teach a skill, play a game of football, or celebrate your birthday, you are deeply valued here.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+              <a
+                href={`https://wa.me/2349019303646?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-stone-950 text-xs font-bold transition-all shadow-sm"
+              >
+                <Smile className="w-4 h-4" />
+                <span>Enquire to Visit Us</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* 4 Ways to Engage Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {engagementPillars.map((pillar, index) => {
             const IconComp = pillar.icon;
             return (
@@ -140,10 +188,10 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ 
-                  duration: shouldReduceMotion ? 0 : 0.5, 
-                  delay: shouldReduceMotion ? 0 : index * 0.1 
+                  duration: shouldReduceMotion ? 0 : 0.45, 
+                  delay: shouldReduceMotion ? 0 : index * 0.08 
                 }}
-                className="p-6 sm:p-7 rounded-3xl bg-white border border-stone-200 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+                className="p-6 rounded-3xl bg-white border border-stone-200 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -151,20 +199,20 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
                       <IconComp className="w-5 h-5 text-vhh-green-700" />
                     </div>
 
-                    <span className={`px-2.5 py-1 rounded-md text-[10px] font-mono uppercase font-bold tracking-wider border ${pillar.badgeColor}`}>
+                    <span className={`px-2 py-0.5 rounded-md text-[10px] font-mono uppercase font-bold tracking-wider border ${pillar.badgeColor}`}>
                       {pillar.tag}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-xl font-bold text-vhh-charcoal group-hover:text-vhh-green-900 transition-colors leading-snug mb-1">
+                  <h3 className="font-serif text-lg font-bold text-vhh-charcoal group-hover:text-vhh-green-900 transition-colors leading-snug mb-1">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-xs font-semibold text-emerald-800 mb-3">
+                  <p className="text-xs font-semibold text-emerald-800 mb-2.5">
                     {pillar.subtitle}
                   </p>
 
-                  <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
+                  <p className="text-xs text-stone-600 font-light leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
@@ -254,11 +302,11 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
             </div>
           </div>
 
-          {/* RIGHT: Interactive Google Maps & Visiting Logistics in Kuje */}
+          {/* RIGHT: Detailed Visiting Times, Coordination Lines & Google Maps */}
           <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between bg-[#fbf9f5]">
             <div>
               {/* Interactive Google Map Embed (Centered on Kuje, Abuja) */}
-              <div className="w-full h-56 sm:h-64 rounded-2xl overflow-hidden border border-stone-300 shadow-inner relative mb-6 bg-stone-200">
+              <div className="w-full h-52 sm:h-56 rounded-2xl overflow-hidden border border-stone-300 shadow-inner relative mb-5 bg-stone-200">
                 <iframe
                   title="Vine Heritage Home Location in Kuje, Abuja"
                   src={embedMapUrl}
@@ -284,35 +332,44 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
                 </a>
               </div>
 
-              {/* Verified Location Points in Kuje */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              {/* SPECIFIC VISITING SCHEDULE & ENQUIRY CONTACTS */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs">
                 
-                {/* Physical Location */}
-                <div className="p-3.5 rounded-xl bg-white border border-stone-200/80 shadow-2xs">
+                {/* 1. Best Visiting Times: Weekends & School Holidays */}
+                <div className="p-3.5 rounded-2xl bg-white border border-stone-200/90 shadow-2xs">
                   <div className="flex items-center gap-1.5 text-vhh-green-900 font-bold mb-1">
-                    <MapPin className="w-4 h-4 text-vhh-green-700 shrink-0" />
-                    <span>Location:</span>
+                    <Clock className="w-4 h-4 text-emerald-700 shrink-0" />
+                    <span>When Can You Visit?</span>
                   </div>
-                  <p className="font-mono text-stone-800 font-bold text-[11px]">
-                    Kuje, Federal Capital Territory
-                  </p>
-                  <p className="text-stone-500 text-[11px] font-light mt-0.5">
-                    Abuja, Nigeria &bull; Detailed address update in progress.
-                  </p>
+                  <div className="space-y-1 text-[11px] text-stone-700">
+                    <p>
+                      &bull; <strong className="text-vhh-green-950">Saturdays &amp; Sundays</strong>: Open for visits (10:00 AM – 6:00 PM). Children are free from school!
+                    </p>
+                    <p>
+                      &bull; <strong className="text-vhh-green-950">School Vacations &amp; Breaks</strong>: Open weekdays with advance notice when schools are on holiday.
+                    </p>
+                    <p className="text-[10px] text-stone-500 italic mt-0.5">
+                      Term-time weekdays are dedicated to external school classes.
+                    </p>
+                  </div>
                 </div>
 
-                {/* Visiting Hours & Arrival Lines */}
-                <div className="p-3.5 rounded-xl bg-white border border-stone-200/80 shadow-2xs">
+                {/* 2. Direct Enquiries & Booking Lines */}
+                <div className="p-3.5 rounded-2xl bg-white border border-stone-200/90 shadow-2xs">
                   <div className="flex items-center gap-1.5 text-vhh-green-900 font-bold mb-1">
-                    <Clock className="w-4 h-4 text-vhh-green-700 shrink-0" />
-                    <span>Visiting Hours & Phone:</span>
+                    <Phone className="w-4 h-4 text-emerald-700 shrink-0" />
+                    <span>Contact for Enquiries:</span>
                   </div>
-                  <p className="text-stone-700 text-[11px]">
-                    Weekends: <strong>10:00 AM – 5:00 PM</strong>
+                  <p className="text-[11px] text-stone-600">
+                    Reach our visitation and gate receiving team directly:
                   </p>
-                  <p className="font-mono text-emerald-800 font-bold text-[11px] mt-0.5">
-                    Call: 09019303646 &bull; 080344229935
-                  </p>
+                  <div className="mt-1 font-mono font-bold text-emerald-800 text-[11px] space-y-0.5">
+                    <div>Call / WhatsApp: 09019303646</div>
+                    <div>Call / SMS: 080344229935</div>
+                  </div>
+                  <div className="text-[10px] text-stone-500 font-mono mt-1">
+                    Destination: Kuje Area Council, Abuja
+                  </div>
                 </div>
 
               </div>
@@ -337,7 +394,7 @@ export const VisitUsSection: React.FC<VisitUsSectionProps> = ({ onPlanVisit }) =
                 className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#25D366] text-white text-xs sm:text-sm font-bold hover:bg-[#20bd5a] transition-colors shadow-xs"
               >
                 <MessageSquare className="w-4 h-4 fill-white" />
-                <span>Message on WhatsApp</span>
+                <span>Message on WhatsApp to Book Visit</span>
               </a>
             </div>
 
