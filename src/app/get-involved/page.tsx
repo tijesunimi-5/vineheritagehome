@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { NoGiftTooSmallBanner } from '@/components/NoGiftTooSmallBanner';
 import { LogisticsDeliveryGuide } from '@/components/LogisticsDeliveryGuide';
 import { NeedsDirectory } from '@/components/NeedsDirectory';
+import { MedicalOutreachSection } from '@/components/MedicalOutreachSection';
 import { BrandPartnershipSection } from '@/components/BrandPartnershipSection';
 import { FinancialTransparencySection } from '@/components/FinancialTransparencySection';
 import { SupportModal } from '@/components/SupportModal';
@@ -13,12 +15,9 @@ import {
   ArrowLeft, 
   Truck, 
   Package, 
+  HeartPulse,
   Handshake, 
-  Landmark, 
-  Heart, 
-  MapPin, 
-  Phone,
-  ShieldCheck
+  Landmark
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -50,7 +49,7 @@ export default function GetInvolvedPage() {
       {/* ========================================================================= */}
       {/* EDITORIAL HERO SECTION                                                    */}
       {/* ========================================================================= */}
-      <section className="pt-32 sm:pt-36 pb-16 sm:pb-20 bg-gradient-to-b from-vhh-dark via-vhh-dark/95 to-[#0f241c] text-white px-5 sm:px-10 lg:px-16 border-b border-white/10 relative overflow-hidden">
+      <section className="pt-32 sm:pt-36 pb-20 sm:pb-24 bg-gradient-to-b from-vhh-dark via-vhh-dark/95 to-[#0f241c] text-white px-5 sm:px-10 lg:px-16 border-b border-white/10 relative overflow-hidden">
         
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(#1a5342_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
@@ -73,7 +72,7 @@ export default function GetInvolvedPage() {
           </h1>
 
           <p className="mt-5 text-base sm:text-lg text-stone-300 font-light max-w-3xl mx-auto leading-relaxed">
-            Market prices fluctuate constantly across Nigeria, which is why we don&rsquo;t post rigid price tags. Instead, here is our transparent catalog of actual physical consumption—so whether you purchase and dispatch goods directly via courier, connect technical engineers, or transfer funds toward a specific need, you know exactly where your support goes.
+            Market prices fluctuate constantly across Nigeria, which is why we don&rsquo;t post rigid price tags. Instead, here is our transparent catalog of actual physical consumption—so whether you purchase and dispatch goods directly via courier, connect doctors and engineers, or transfer funds toward a specific need, you know exactly where your support goes.
           </p>
 
           {/* Location & Receiving Assurance */}
@@ -91,7 +90,7 @@ export default function GetInvolvedPage() {
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/10"
             >
               <Truck className="w-3.5 h-3.5 text-emerald-300" />
-              <span>Courier &amp; Logistics Delivery</span>
+              <span>Courier Delivery</span>
             </button>
 
             <button
@@ -99,7 +98,15 @@ export default function GetInvolvedPage() {
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/10"
             >
               <Package className="w-3.5 h-3.5 text-emerald-300" />
-              <span>Browse 8 Needs Categories</span>
+              <span>Browse Needs &amp; Food</span>
+            </button>
+
+            <button
+              onClick={() => scrollToSection('medical-outreach')}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-200 font-semibold transition-colors border border-red-400/30"
+            >
+              <HeartPulse className="w-3.5 h-3.5 text-red-300" />
+              <span>Doctor &amp; Hospital Alliances</span>
             </button>
 
             <button
@@ -107,7 +114,7 @@ export default function GetInvolvedPage() {
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/10"
             >
               <Handshake className="w-3.5 h-3.5 text-emerald-300" />
-              <span>Diaper &amp; Brand Partnerships</span>
+              <span>Diaper Partnerships</span>
             </button>
 
             <button
@@ -123,6 +130,13 @@ export default function GetInvolvedPage() {
       </section>
 
       {/* ========================================================================= */}
+      {/* 00. NO GIFT IS TOO SMALL (DIGNIFIED REASSURANCE BANNER)                   */}
+      {/* ========================================================================= */}
+      <NoGiftTooSmallBanner 
+        onOpenSupport={(purpose) => handleDonateCategory(purpose || "General Operational Support")}
+      />
+
+      {/* ========================================================================= */}
       {/* 01. HOW TO SEND PHYSICAL GOODS (LOGISTICS DELIVERY SYSTEM)                */}
       {/* ========================================================================= */}
       <LogisticsDeliveryGuide />
@@ -136,12 +150,19 @@ export default function GetInvolvedPage() {
       />
 
       {/* ========================================================================= */}
-      {/* 03. BRAND & CORPORATE PRODUCT ALLIANCES (DIAPER ALLIANCE)                 */}
+      {/* 03. HEALTHCARE, DOCTOR OUTREACHES & EMERGENCY HOSPITAL RETAINERS         */}
+      {/* ========================================================================= */}
+      <MedicalOutreachSection 
+        onOpenDonate={handleDonateCategory}
+      />
+
+      {/* ========================================================================= */}
+      {/* 04. BRAND & CORPORATE PRODUCT ALLIANCES (DIAPER ALLIANCE)                 */}
       {/* ========================================================================= */}
       <BrandPartnershipSection />
 
       {/* ========================================================================= */}
-      {/* 04. RADICAL FINANCIAL TRANSPARENCY & DIRECT BANK ACCOUNTS                */}
+      {/* 05. RADICAL FINANCIAL TRANSPARENCY & DIRECT BANK ACCOUNTS                */}
       {/* ========================================================================= */}
       <FinancialTransparencySection 
         onOpenModal={() => setSupportModalOpen(true)}

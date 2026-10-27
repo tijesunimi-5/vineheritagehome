@@ -1,17 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { 
   Baby, 
   Users, 
   Utensils, 
   GraduationCap, 
   HeartPulse, 
-  Sun, 
   Bus, 
   Heart, 
-  Sparkles, 
   CheckCircle2, 
   Package, 
   Copy, 
@@ -19,7 +17,10 @@ import {
   ArrowRight, 
   Wind, 
   ShieldCheck,
-  AlertCircle
+  AlertCircle,
+  Wheat,
+  Smile,
+  Scissors
 } from 'lucide-react';
 
 interface NeedsDirectoryProps {
@@ -32,10 +33,373 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
   onOpenLogistics 
 }) => {
   const shouldReduceMotion = useReducedMotion();
-  const [activeCategory, setActiveCategory] = useState<string>("newborns");
+  const [activeCategory, setActiveCategory] = useState<string>("food");
   const [copiedItemId, setCopiedItemId] = useState<string | null>(null);
 
   const categories = [
+    {
+      id: "food",
+      label: "Food, Nigerian Dishes & Farmers",
+      ageBracket: "All 239 Children",
+      icon: Utensils,
+      badgeColor: "bg-orange-100 text-orange-900 border-orange-300",
+      consumptionSummary: "Cooking 3 freshly prepared hot, nutritious meals every single day for 239 growing children and staff requires truckloads of grains, authentic Nigerian staples, farm produce, and cooking fuel. Sustaining our kitchen is our single largest daily operational requirement.",
+      farmerNotice: "Special Appeal to Farmers & Food Wholesalers: If you are a farmer or market trader, you can donate your fresh harvest (tomatoes, peppers, yams, grains) directly to our sanctuary. The greatest blessing is that God will surely reward, prosper, and multiply your barns — it is proven to be true!",
+      items: [
+        {
+          id: "fd-farm",
+          name: "Fresh Farm Tomatoes & Peppers (Tatase, Rodo, Shombo)",
+          specs: "Baskets of fresh tomatoes, scotch bonnets, bell peppers & onions",
+          urgency: "Vital Fresh Nutrition",
+          details: "Fresh produce is preferred over canned pastes to protect our children's digestive health and provide rich vitamins for daily Nigerian stews.",
+          transferTag: "VHH FRESH TOMATOES"
+        },
+        {
+          id: "fd-noodles",
+          name: "Cartons of Instant Noodles (Indomie / Minimie)",
+          specs: "Wholesale 40-pack cartons of chicken or onion flavor noodles",
+          urgency: "Children's Favorite Meal",
+          details: "A quick, hot, and delicious meal that our children eagerly celebrate after long school days and during weekend activities.",
+          transferTag: "VHH NOODLES"
+        },
+        {
+          id: "fd-breakfast",
+          name: "Morning Hot Porridge: Custard, Millet & Fresh Pap (Ogi/Akamu)",
+          specs: "Custard tins, bags of cleaned millet, and bulk fresh corn pap",
+          urgency: "Daily School Breakfast",
+          details: "Served steaming hot with milk before our children board the school buses, giving them long-lasting morning energy for classroom learning.",
+          transferTag: "VHH BREAKFAST"
+        },
+        {
+          id: "fd-pasta",
+          name: "Cartons of Spaghetti & Macaroni Pastas",
+          specs: "Golden Penny, Dangote, or Honeywell 500g packs in cartons",
+          urgency: "Quick Energy Staples",
+          details: "Cooked with tomato stew, fish, and vegetables for hearty, satisfying lunches and dinners across all dormitories.",
+          transferTag: "VHH SPAGHETTI"
+        },
+        {
+          id: "fd-eggs",
+          name: "Crates of Farm-Fresh Eggs",
+          specs: "Dozens of crates of fresh, large table eggs",
+          urgency: "Brain-Building Protein",
+          details: "Vital high-protein breakfast and dinner supplement supporting cognitive development and immune vitality in 239 growing minds.",
+          transferTag: "VHH EGGS"
+        },
+        {
+          id: "fd-fish",
+          name: "Cartons of Fish (Titus / Mackerel) & Smoked/Dried Fish",
+          specs: "20kg frozen cartons of Titus/Mackerel & sacks of dried catfish",
+          urgency: "Essential Protein",
+          details: "Rich source of Omega-3 fatty acids and protein for authentic Nigerian soups (Egusi, Ogbono, and Vegetable pottages).",
+          transferTag: "VHH FISH"
+        },
+        {
+          id: "fd-fruits",
+          name: "Fresh Seasonal Fruits (Watermelons, Bananas, Oranges, Apples)",
+          specs: "Bulk wholesale sacks and crates of fresh tropical fruits",
+          urgency: "Immunity & Digestion",
+          details: "Daily fruit portions keep our children healthy, prevent vitamin deficiencies, and keep pediatric clinic visits low.",
+          transferTag: "VHH FRUITS"
+        },
+        {
+          id: "fd-snacks",
+          name: "Children's Refreshments, Snacks & Treats ('Junks & Goodies')",
+          specs: "Cartons of biscuits, cookies, chin-chin, popcorn & fruit drinks",
+          urgency: "Childhood Joy & Refreshment",
+          details: "Every child deserves joyful refreshments during weekend play, holiday celebrations, birthday parties, and movie nights!",
+          transferTag: "VHH SNACKS"
+        },
+        {
+          id: "fd-rice-beans",
+          name: "Bags of Long-Grain Rice (50kg) & Brown Beans (50kg)",
+          specs: "Stone-free Nigerian or foreign rice & drum beans in 50kg sacks",
+          urgency: "Daily Core Foundation",
+          details: "Our kitchen cooks dozens of kilograms daily. Rice and protein-rich beans form the bedrock of daily nourishment.",
+          transferTag: "VHH RICE & BEANS"
+        },
+        {
+          id: "fd-yam",
+          name: "Tubers of Yam (Benue / Abuja Sweet Yams)",
+          specs: "Dozens or pick-up truckloads of quality large yams",
+          urgency: "Wholesome Carbohydrate",
+          details: "Boiled yam with egg sauce or evening pounded yam and vegetable soup provides sustained energy for school children.",
+          transferTag: "VHH YAM"
+        },
+        {
+          id: "fd-oil",
+          name: "Cooking Oils (25-Litre Kegs Vegetable & Red Palm Oil)",
+          specs: "Pure refined vegetable cooking oil & premium red palm oil kegs",
+          urgency: "Essential Daily Cooking",
+          details: "Used every morning and evening to prepare stews, soups, beans porridge, and fried treats.",
+          transferTag: "VHH COOKING OIL"
+        },
+        {
+          id: "fd-swallows",
+          name: "Bags of Semovita, Wheat Flour & Garri",
+          specs: "50kg & 10kg bags of Golden Penny Semo, Wheat & Ijebu Garri",
+          urgency: "Evening Swallows",
+          details: "Served communal-family style with rich melon and vegetable soups for dinner.",
+          transferTag: "VHH GRAINS"
+        },
+        {
+          id: "fd-gas",
+          name: "Industrial 50kg Cooking Gas Refilling",
+          specs: "Refilling 50kg industrial cylinders for commercial kitchen burners",
+          urgency: "Non-Stop Kitchen Fuel",
+          details: "Our heavy burners run continuously from 5:00 AM to 8:30 PM to feed 239 children without interruption.",
+          transferTag: "VHH COOKING GAS"
+        }
+      ]
+    },
+    {
+      id: "education",
+      label: "External Schooling & Academics",
+      ageBracket: "Nursery to Tertiary",
+      icon: GraduationCap,
+      badgeColor: "bg-blue-100 text-blue-900 border-blue-300",
+      consumptionSummary: "Vine Heritage Home is NOT a school. All 239 children are enrolled in external accredited primary, secondary, and tertiary institutions in town. VHH covers 100% of their tuition fees, uniforms, textbooks, calculators, and daily bus transportation.",
+      items: [
+        {
+          id: "ed-tuition",
+          name: "Term Tuition & School Fees Sponsorship",
+          specs: "Sponsor term fees for Nursery, Primary, Secondary, or Tertiary students",
+          urgency: "Life-Transforming Priority",
+          details: "Directly covers accredited school tuition and PTA levies so no child's academic future is delayed or halted.",
+          transferTag: "VHH SCHOOL FEES"
+        },
+        {
+          id: "ed-shoes",
+          name: "Durable School Shoes, Crocs & White Socks",
+          specs: "Black leather school dress shoes (sizes 26–42), sport trainers, white socks",
+          urgency: "School Dress Code & Dignity",
+          details: "Essential for 239 students walking onto school assembly grounds looking sharp, confident, and well-groomed.",
+          transferTag: "VHH SCHOOL SHOES"
+        },
+        {
+          id: "ed-bags",
+          name: "Heavy-Duty Waterproof School Bags & Backpacks",
+          specs: "Reinforced ergonomic backpacks with padded straps and water bottle pockets",
+          urgency: "Protecting Learning Materials",
+          details: "Built to withstand daily bus commutes and keep expensive textbooks completely safe from rain and rough handling.",
+          transferTag: "VHH SCHOOL BAGS"
+        },
+        {
+          id: "ed-textbooks",
+          name: "Approved Curriculum Textbooks (All Subjects)",
+          specs: "English, Mathematics, Basic Science, Physics, Chemistry, Biology, Government",
+          urgency: "Academic Excellence",
+          details: "Equips our students with the exact textbooks required by accredited schools to complete homework and prepare for examinations.",
+          transferTag: "VHH TEXTBOOKS"
+        },
+        {
+          id: "ed-exercise",
+          name: "Exercise Books (40, 60, 80-Leaves & 2B Higher Education)",
+          specs: "Wholesale cartons of lined exercise books, graph sheets, and hardcover notes",
+          urgency: "Everyday Classroom Use",
+          details: "239 students go through thousands of notebook pages and biro pens every term.",
+          transferTag: "VHH EXERCISE BOOKS"
+        },
+        {
+          id: "ed-calculators",
+          name: "Casio Scientific Calculators & Mathematical Sets",
+          specs: "Casio fx-991EX / fx-82 series calculators & Oxford mathematical instrument sets",
+          urgency: "Senior Secondary STEM",
+          details: "Mandatory equipment for our older students sitting for WAEC, NECO, and JAMB exams.",
+          transferTag: "VHH CALCULATORS"
+        },
+        {
+          id: "ed-flasks",
+          name: "School Water Flasks & Insulated Lunch Bowls",
+          specs: "BPA-free durable water bottles & stainless steel thermal food flasks",
+          urgency: "Daily School Nourishment",
+          details: "Ensures children take clean, filtered water and packed mid-day lunches to school each morning.",
+          transferTag: "VHH LUNCH FLASKS"
+        }
+      ]
+    },
+    {
+      id: "health",
+      label: "Healthcare, Doctors & Special Needs",
+      ageBracket: "All Residents",
+      icon: HeartPulse,
+      badgeColor: "bg-red-100 text-red-900 border-red-300",
+      consumptionSummary: "Preserving the health of 239 children is one of our largest and most delicate ongoing commitments. We seek partnerships with qualified medical doctors for regular outreaches, training for caregivers, emergency hospital retainers, and specialized care for children with albinism and cerebral palsy.",
+      items: [
+        {
+          id: "hl-outreach",
+          name: "Medical Doctor Outreaches & Drug Distributions",
+          specs: "Volunteer medical doctors, pediatricians & nurses conducting clinic days",
+          urgency: "Preventative Health Outreach",
+          details: "Conducting comprehensive vitals checkups, routine physicals, and supplying accredited pediatric dispensary medications.",
+          transferTag: "VHH DOCTOR OUTREACH"
+        },
+        {
+          id: "hl-emergency",
+          name: "Emergency Hospital Retainership & Surgery Escrow",
+          specs: "Emergency medical fund guaranteeing immediate private/tertiary hospital admission",
+          urgency: "Life-Saving Safety Net",
+          details: "Guarantees sick children are NEVER turned away or rejected by hospitals during acute emergencies, lifting the terror of crippling bills.",
+          transferTag: "VHH EMERGENCY MED"
+        },
+        {
+          id: "hl-triage",
+          name: "Standby Tele-Triage & Clinical Advisor",
+          specs: "24/7 on-call medical professional advising home nurse on fever/injury escalations",
+          urgency: "Rapid Decision Support",
+          details: "Provides instant clinical guidance on whether to treat symptoms with home clinic drugs or rush a child immediately to emergency care.",
+          transferTag: "VHH CLINICAL ADVISOR"
+        },
+        {
+          id: "hl-albinism",
+          name: "High-SPF 50+ Sunscreen & UV Hats (For Albinism)",
+          specs: "Dermatological mineral sunscreens, wide-brim UV hats, and soothing body lotions",
+          urgency: "Skin Cancer Prevention",
+          details: "Several of our rescued children live with albinism; daily sunscreen is essential to prevent painful burns and dangerous precancerous lesions.",
+          transferTag: "VHH ALBINISM CARE"
+        },
+        {
+          id: "hl-meds",
+          name: "Pediatric Medications & Antimalarials",
+          specs: "Artemether/Lumefantrine syrups, Paracetamol, Ibuprofen, Amoxicillin, multivitamins",
+          urgency: "Dispensary Stocking",
+          details: "Prompt treatment of malaria, viral fevers, and coughs by our resident nurse prevents severe complications.",
+          transferTag: "VHH MEDICINE"
+        },
+        {
+          id: "hl-firstaid",
+          name: "First Aid Kits, Bandages & Playground Injury Supplies",
+          specs: "Gauze rolls, methylated spirit, Dettol, cotton wool, plasters, burn ointments",
+          urgency: "Home Incident Care",
+          details: "Immediate treatment for cuts, scrapes, and playground injuries for 239 energetic children.",
+          transferTag: "VHH FIRST AID"
+        },
+        {
+          id: "hl-specialneeds",
+          name: "Mobility Aids & Physical Therapy Supports",
+          specs: "Pediatric wheelchairs, walking frames, sensory exercise balls & braces",
+          urgency: "Special Needs Dignity",
+          details: "Direct therapy and mobility aids for our children living with Cerebral Palsy and physical developmental challenges.",
+          transferTag: "VHH SPECIAL NEEDS"
+        }
+      ]
+    },
+    {
+      id: "facility",
+      label: "Cooling, Laundry & Home Comfort",
+      ageBracket: "Facility Infrastructure",
+      icon: Wind,
+      badgeColor: "bg-cyan-100 text-cyan-900 border-cyan-300",
+      consumptionSummary: "Kuje Abuja experiences extreme seasonal heat and dust. Keeping 239 children healthy requires clean clothes, hygienic barbering tools, well-ventilated dormitories, cold storage for medical supplies, and 24/7 solar power.",
+      items: [
+        {
+          id: "fc-washing",
+          name: "Commercial Heavy-Duty Washing Machines (10kg – 15kg+)",
+          specs: "Industrial top-loader or front-loader heavy-duty automatic washing machines",
+          urgency: "Massive Compound Relief",
+          details: "Washing daily clothing, bedsheets, blankets, and school uniforms for 239 children by hand is exhausting for housemothers; commercial machines bring vital dignity and relief.",
+          transferTag: "VHH WASHING MACHINE"
+        },
+        {
+          id: "fc-barber",
+          name: "Professional Hair Clippers & UV/Electric Tool Sterilizers",
+          specs: "Heavy-duty electric barbering clippers & hospital-grade UV sterilizing cabinets",
+          urgency: "Scalp Infection Prevention",
+          details: "Sterilizing clippers and combs before every haircut ensures our 239 children remain safe from ringworm, fungal scalp infections, and communicable skin issues.",
+          transferTag: "VHH BARBER STERILIZER"
+        },
+        {
+          id: "fc-fans",
+          name: "Heavy-Duty Standing & Wall-Mounted Fans",
+          specs: "Ox, Panasonic, or Century 18-inch industrial metal standing & wall fans",
+          urgency: "Dormitory Airflow",
+          details: "Ensures dormitories, dining rooms, and study halls stay cool and well-ventilated during Abuja's dry season heat.",
+          transferTag: "VHH FANS"
+        },
+        {
+          id: "fc-ac",
+          name: "Inverter Air Conditioners (1.5HP / 2.0HP)",
+          specs: "Energy-saving inverter AC units for the Infant Nursery & Medical Clinic",
+          urgency: "Infant & Clinic Temperature Control",
+          details: "Fragile newborn infants and feverish patients in our clinic ward require regulated cool air to prevent severe dehydration and heat exhaustion.",
+          transferTag: "VHH AIR CONDITIONING"
+        },
+        {
+          id: "fc-solar",
+          name: "Solar Inverter Deep-Cycle Batteries & Servicing",
+          specs: "200Ah tubular deep-cycle batteries, lithium storage packs, and inverter servicing",
+          urgency: "24/7 Power Security",
+          details: "Eliminates dangerous darkness, powers fans and medical refrigerators, and avoids toxic generator fumes on the sanctuary grounds.",
+          transferTag: "VHH SOLAR"
+        },
+        {
+          id: "fc-water",
+          name: "Borehole Water Submersible Pump Servicing & Filtration",
+          specs: "Industrial submersible water pump servicing & multi-stage filtration cartridges",
+          urgency: "Clean Drinking Water",
+          details: "Supplies thousands of litres of pure, clean running water daily for drinking, cooking, bathing, and sanitation.",
+          transferTag: "VHH WATER PUMP"
+        },
+        {
+          id: "fc-mattress",
+          name: "Bunk Bed Mattresses & Waterproof Protectors",
+          specs: "High-density foam mattresses (3x6), pillows, and waterproof protective sheets",
+          urgency: "Restful Bedding",
+          details: "Ensures sound, spinal-supportive sleep for all 239 growing boys and girls.",
+          transferTag: "VHH MATTRESSES"
+        }
+      ]
+    },
+    {
+      id: "transit",
+      label: "Buses, Vehicles & Caregiver Wages",
+      ageBracket: "Daily Operations",
+      icon: Bus,
+      badgeColor: "bg-indigo-100 text-indigo-900 border-indigo-300",
+      consumptionSummary: "Our current vehicles are simply not enough to transport 239 children to external schools, forcing caregivers to squeeze kids in and run multiple tiring trips. Fleet expansion, qualified mechanic maintenance, daily fuel, and caregiver wages are essential.",
+      items: [
+        {
+          id: "tr-vehicle",
+          name: "Additional School Buses & Transit Passenger Vans",
+          specs: "Donation or co-sponsorship of 30–50 seater Coaster bus, Toyota HiAce, or Sienna",
+          urgency: "Eliminating Severe Transit Congestion",
+          details: "Our current vehicles cannot carry 239 children; kids are squeezed tightly across multiple shifts every morning. Additional passenger buses ensure safe, comfortable school transit.",
+          transferTag: "VHH NEW BUS"
+        },
+        {
+          id: "tr-servicing",
+          name: "School Bus Mechanical Servicing & Heavy-Duty Tires",
+          specs: "New bus tires, brake pads, engine overhaul, suspension, and shock absorbers",
+          urgency: "Child Transit Safety",
+          details: "Our school buses must remain 100% roadworthy to transport 239 children safely without roadside breakdowns.",
+          transferTag: "VHH BUS REPAIRS"
+        },
+        {
+          id: "tr-engineer",
+          name: "Qualified Auto-Mechanic / Engineer Sponsorship",
+          specs: "Sponsor certified auto-mechanic fees or connect a licensed Abuja engineer",
+          urgency: "Technical Maintenance",
+          details: "Help us hire a verified automobile engineer to inspect and maintain our transit fleet on a professional monthly retainer.",
+          transferTag: "VHH MECHANIC HIRE"
+        },
+        {
+          id: "tr-fuel",
+          name: "Daily School Bus Transit Fuel (Diesel & Petrol)",
+          specs: "Weekly fuel allocations powering morning and afternoon school transit runs",
+          urgency: "Daily Mobility",
+          details: "Ensures our transit vans never stall on runs between Kuje, Abuja schools, and emergency hospital trips.",
+          transferTag: "VHH BUS FUEL"
+        },
+        {
+          id: "tr-wages",
+          name: "30 Caregivers & House Mothers Monthly Wages",
+          specs: "Monthly caregiver stipends, cook, laundry team, security, and clinic nurse support",
+          urgency: "24/7 Frontline Loving Care",
+          details: "Behind every child are 30 devoted caregivers who live with, nurse, feed, teach, and protect 239 children around the clock. Their stipends sustain continuity of care.",
+          transferTag: "VHH CAREGIVER WAGES"
+        }
+      ]
+    },
     {
       id: "newborns",
       label: "Newborns & Infants",
@@ -45,15 +409,15 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
       consumptionSummary: "Rescued infants arrive needing immediate maternal nursing care. A single newborn consumes 8–10 diapers daily plus specialized infant formula every 3 hours. With multiple infants under care, diaper packs and formula tins vanish rapidly.",
       items: [
         {
-          id: "nb-1",
+          id: "nb-diapers",
           name: "Diapers (Sizes: Newborn, 1, 2, 3, 4)",
-          specs: "Huggies, Molfix, Pampers, Bebem or Softcare packs",
+          specs: "Molfix, Huggies, Pampers, Bebem or Softcare jumbo cartons",
           urgency: "Perpetual Daily Need",
           details: "Essential for 24/7 sanitary hygiene, rash prevention, and keeping newly rescued infants dry and comfortable.",
           transferTag: "VHH DIAPERS"
         },
         {
-          id: "nb-2",
+          id: "nb-formula",
           name: "Infant Baby Formula Tins",
           specs: "NAN 1 & 2, SMA Gold, Lactogen, My Boy",
           urgency: "Critical Nutrition",
@@ -61,23 +425,23 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
           transferTag: "VHH FORMULA"
         },
         {
-          id: "nb-3",
+          id: "nb-wipes",
           name: "Baby Wipes & Cotton Wool Rolls",
-          specs: "Unscented, sensitive skin wipes in bulk cartons",
+          specs: "Unscented, sensitive skin wipes in bulk cartons & sterile cotton wool",
           urgency: "High Ongoing Need",
           details: "Used at every diaper change to maintain clean skin and prevent pediatric bacterial infections.",
           transferTag: "VHH BABY WIPES"
         },
         {
-          id: "nb-4",
-          name: "Feeding Bottles, Teats & Electric Sterilizers",
-          specs: "BPA-free feeding bottles, replacement teats, steam sterilizers",
+          id: "nb-bottles",
+          name: "Feeding Bottles, Teats & Steam Sterilizers",
+          specs: "BPA-free feeding bottles, replacement silicone teats, electric sterilizers",
           urgency: "Hygiene & Feeding",
           details: "Sterile bottles are cleaned and sanitized round-the-clock for day and night bottle feedings.",
           transferTag: "VHH STERILIZERS"
         },
         {
-          id: "nb-5",
+          id: "nb-care",
           name: "Baby Bathing Soaps, Oils & Rash Ointments",
           specs: "Cussons Baby, Sebamed, Sudocrem, Vaseline petroleum jelly",
           urgency: "Skin Dignity",
@@ -85,9 +449,9 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
           transferTag: "VHH BABY SOAPS"
         },
         {
-          id: "nb-6",
+          id: "nb-cots",
           name: "Infant Cots, Mattresses & Swaddling Shawls",
-          specs: "Wooden/metal baby cots, firm foam mattresses, cotton blankets",
+          specs: "Wooden/metal baby cots, firm foam mattresses, soft cotton swaddle wraps",
           urgency: "Rest & Safety",
           details: "Providing safe individual sleeping spaces in the infant nursery under house mother supervision.",
           transferTag: "VHH BABY COTS"
@@ -103,7 +467,7 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
       consumptionSummary: "Active, energetic boys and girls playing and growing quickly. Footwear, everyday clothing, and undergarments wear out rapidly with 239 children running and playing daily.",
       items: [
         {
-          id: "td-1",
+          id: "td-clothes",
           name: "Everyday Clothes & Sunday Wears (Ages 3–11)",
           specs: "Durable cotton shirts, shorts, trousers, dresses, church outfits",
           urgency: "Ongoing Dignity",
@@ -111,23 +475,23 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
           transferTag: "VHH CHILD CLOTHING"
         },
         {
-          id: "td-2",
-          name: "Sandals, Crocs & School Shoes (Sizes 26–36)",
-          specs: "Durable rubber sandals, black leather school shoes, trainers",
+          id: "td-shoes",
+          name: "Sandals, Crocs & Play Shoes (Sizes 26–36)",
+          specs: "Durable rubber sandals, play sneakers, everyday slippers",
           urgency: "High Wear & Tear",
-          details: "With 239 active children playing on our Kuje grounds, shoes require regular replacement.",
+          details: "With active children playing on our Kuje grounds, shoes require regular replacement.",
           transferTag: "VHH CHILD SHOES"
         },
         {
-          id: "td-3",
+          id: "td-underwear",
           name: "Children's Underwear, Singlets & Socks",
-          specs: "100% cotton panties, boxers, vests, white/black school socks",
+          specs: "100% cotton panties, boxers, vests, everyday socks packs",
           urgency: "Personal Hygiene",
           details: "Fresh undergarments provided regularly for all growing boys and girls.",
           transferTag: "VHH UNDERWEAR"
         },
         {
-          id: "td-4",
+          id: "td-vitamins",
           name: "Pediatric Multivitamins & Cod Liver Oil",
           specs: "Vitamin C syrups, Seven Seas cod liver oil, appetite stimulants",
           urgency: "Child Immunity",
@@ -135,7 +499,7 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
           transferTag: "VHH VITAMINS"
         },
         {
-          id: "td-5",
+          id: "td-play",
           name: "Educational Storybooks & Indoor Play Games",
           specs: "Reading books, building blocks, puzzle boards, footballs",
           urgency: "Recreation & Mind",
@@ -150,18 +514,18 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
       ageBracket: "12 – 18+ Years",
       icon: Heart,
       badgeColor: "bg-rose-100 text-rose-900 border-rose-300",
-      consumptionSummary: "We have dozens of young girls reaching womanhood and boys growing into young men. Sanitary towels and personal hygiene toiletries are consumed in large quantities every single month.",
+      consumptionSummary: "Dozens of young girls reaching womanhood and boys growing into young men. Sanitary towels and personal hygiene toiletries are consumed in large quantities every single month.",
       items: [
         {
-          id: "tn-1",
+          id: "tn-pads",
           name: "Sanitary Pads / Towels (Heavy & Regular Flow)",
           specs: "Always, Kotex, Molped, Lady Care (Cartons)",
           urgency: "Critical Dignity Need",
-          details: "Dozens of adolescent girls experience monthly menstrual cycles; zero girl at VHH should ever face period poverty.",
+          details: "Over 40 adolescent girls experience monthly menstrual cycles; zero girl at VHH should ever face period poverty.",
           transferTag: "VHH SANITARY PADS"
         },
         {
-          id: "tn-2",
+          id: "tn-toiletries",
           name: "Bathing Soaps, Deodorants & Body Lotions",
           specs: "Antiseptic soaps (Dettol, Premier), roll-on deodorants, lotions",
           urgency: "Daily Hygiene",
@@ -169,7 +533,7 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
           transferTag: "VHH TOILETRIES"
         },
         {
-          id: "tn-3",
+          id: "tn-detergent",
           name: "Laundry Detergents & Washing Bar Soaps",
           specs: "Omo, Sunlight, Ariel, Viva detergent bags & key soaps",
           urgency: "Bulk Compound Need",
@@ -177,7 +541,7 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
           transferTag: "VHH DETERGENTS"
         },
         {
-          id: "tn-4",
+          id: "tn-teenwear",
           name: "Teen Undergarments (Bras, Boxers, Singlets)",
           specs: "Teenage training bras, brassieres, cotton boxers, singlets",
           urgency: "Comfort & Dignity",
@@ -185,270 +549,12 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
           transferTag: "VHH TEEN WEAR"
         },
         {
-          id: "tn-5",
-          name: "Hair Grooming Kits & Clippers",
-          specs: "Professional hair clippers, hair creams, combs, relaxers/conditioners",
+          id: "tn-hair",
+          name: "Hair Grooming Products, Braiding Creams & Combs",
+          specs: "Hair creams, leave-in conditioners, detangling combs, relaxers",
           urgency: "Maintenance Care",
-          details: "Weekly hair cutting and braiding sessions for all 239 children before school Monday morning.",
+          details: "Weekly hair grooming and braiding sessions for all 239 children before school Monday morning.",
           transferTag: "VHH HAIR GROOMING"
-        }
-      ]
-    },
-    {
-      id: "food",
-      label: "Food & Kitchen Staples",
-      ageBracket: "All 239 Children",
-      icon: Utensils,
-      badgeColor: "bg-orange-100 text-orange-900 border-orange-300",
-      consumptionSummary: "Cooking 3 freshly prepared hot, balanced meals every single day for 239 children and staff requires truckloads of grains, tubers, and cooking gas. Sustaining this kitchen is our single largest daily operational requirement.",
-      items: [
-        {
-          id: "fd-1",
-          name: "Bags of Rice (50kg) & Beans (50kg)",
-          specs: "Local or foreign stone-free rice bags & drum beans bags",
-          urgency: "Staple Foundation",
-          details: "Our kitchen cooks dozens of kilograms of rice and protein-rich beans daily to nourish 239 growing bodies.",
-          transferTag: "VHH RICE & BEANS"
-        },
-        {
-          id: "fd-2",
-          name: "Tubers of Yam (Dozens & Truckloads)",
-          specs: "Abuja / Benue sweet yams in dozens or pick-up truckloads",
-          urgency: "Essential Carbohydrate",
-          details: "Boiled, pounded, or pottage yam provides long-lasting sustained energy for children attending school.",
-          transferTag: "VHH YAM"
-        },
-        {
-          id: "fd-3",
-          name: "Cooking Oil (25L Kegs Vegetable & Palm Oil)",
-          specs: "25-Litre yellow kegs of pure groundnut oil & red palm oil",
-          urgency: "Daily Cooking Need",
-          details: "Used for preparing daily soups, stews, bean porridges, and frying.",
-          transferTag: "VHH COOKING OIL"
-        },
-        {
-          id: "fd-4",
-          name: "Bags of Semovita, Wheat, Flour & Garri",
-          specs: "10kg / 50kg bags of Golden Penny Semo, Wheat & Ijebu Garri",
-          urgency: "Dinner Swallow Staples",
-          details: "Served with vegetable and melon soups during family communal evening dinners.",
-          transferTag: "VHH GRAINS"
-        },
-        {
-          id: "fd-5",
-          name: "Cooking Seasonings & Tomato Pastes",
-          specs: "Salt bags, Maggi/Knorr cubes cartons, Gino/Derica tomato paste",
-          urgency: "Nutritional Flavor",
-          details: "Essential pantry ingredients used daily to prepare savory, nutritious meals.",
-          transferTag: "VHH SEASONINGS"
-        },
-        {
-          id: "fd-6",
-          name: "Cartons of Milk, Milo/Ovaltine & Sugar",
-          specs: "Powdered milk bags/tins, cocoa malt drinks, granulated sugar",
-          urgency: "Morning Breakfast",
-          details: "Served with morning pap (akamu) or tea before children board the school bus.",
-          transferTag: "VHH BREAKFAST"
-        },
-        {
-          id: "fd-7",
-          name: "Industrial 50kg Cooking Gas Refilling",
-          specs: "Refilling 50kg industrial kitchen cylinders",
-          urgency: "Kitchen Cooking Fuel",
-          details: "Large burners cook continuously from 5:00 AM to 8:00 PM; gas refilling is a constant ongoing need.",
-          transferTag: "VHH COOKING GAS"
-        }
-      ]
-    },
-    {
-      id: "education",
-      label: "External Schooling & Academics",
-      ageBracket: "Nursery to Tertiary",
-      icon: GraduationCap,
-      badgeColor: "bg-blue-100 text-blue-900 border-blue-300",
-      consumptionSummary: "Vine Heritage Home is NOT a school. All 239 children are enrolled in external accredited schools in town. VHH pays 100% of their tuition fees, provides uniforms, books, instruments, and bus transit.",
-      items: [
-        {
-          id: "ed-1",
-          name: "Term School Fees Sponsorship",
-          specs: "Sponsor term tuition for Primary, Secondary or Tertiary students",
-          urgency: "Future Foundation",
-          details: "Directly funds external accredited tuition so no child's academic progress is interrupted.",
-          transferTag: "VHH SCHOOL FEES"
-        },
-        {
-          id: "ed-2",
-          name: "Mathematical Sets & Scientific Calculators",
-          specs: "Casio fx-991/82 series calculators & Oxford mathematical sets",
-          urgency: "Senior School STEM",
-          details: "Equipping secondary school students with the precise instruments required for WAEC, NECO & JAMB exams.",
-          transferTag: "VHH CALCULATORS"
-        },
-        {
-          id: "ed-3",
-          name: "Exercise Books (40, 60, 80-Leaves & 2B Higher)",
-          specs: "Wholesale cartons of lined exercise books & graph sheets",
-          urgency: "Writing Material",
-          details: "239 students go through thousands of note pages every academic session.",
-          transferTag: "VHH EXERCISE BOOKS"
-        },
-        {
-          id: "ed-4",
-          name: "Approved Textbooks (All Subjects)",
-          specs: "English, Mathematics, Basic Science, Physics, Chemistry, Biology",
-          urgency: "Curriculum Material",
-          details: "Enabling children to study effectively and do afternoon homework in our communal living hall.",
-          transferTag: "VHH TEXTBOOKS"
-        },
-        {
-          id: "ed-5",
-          name: "Durable School Bags & Water Bottles",
-          specs: "Reinforced waterproof backpacks & insulated water flasks",
-          urgency: "Daily Transit",
-          details: "Carrying heavy textbooks and staying hydrated throughout the school day.",
-          transferTag: "VHH SCHOOL BAGS"
-        }
-      ]
-    },
-    {
-      id: "health",
-      label: "Healthcare & Special Needs",
-      ageBracket: "All Residents",
-      icon: HeartPulse,
-      badgeColor: "bg-red-100 text-red-900 border-red-300",
-      consumptionSummary: "A resident home nurse manages routine ailments, but with 239 children, medical clinics, dental care, malaria treatments, and special needs care require specialized supplies.",
-      items: [
-        {
-          id: "hl-1",
-          name: "Dermatology Sunscreens & Hats (For Albinism)",
-          specs: "High SPF 50+ mineral sunscreens, wide-brim hats, soothing lotions",
-          urgency: "Skin Cancer Prevention",
-          details: "Our children born with albinism require daily sunscreen to prevent painful sunburns and malignant skin lesions.",
-          transferTag: "VHH ALBINISM CARE"
-        },
-        {
-          id: "hl-2",
-          name: "Pediatric Medications & Antimalarials",
-          specs: "Artemether/Lumefantrine syrups, Paracetamol, Ibuprofen, multivitamins",
-          urgency: "Routine Clinic Supply",
-          details: "Prompt malaria and fever treatment by our home nurse saves lives and avoids emergency hospital admissions.",
-          transferTag: "VHH MEDICINE"
-        },
-        {
-          id: "hl-3",
-          name: "First Aid Kits, Bandages & Disinfectants",
-          specs: "Cotton wool, methylated spirit, Dettol, gauze rolls, plasters, gloves",
-          urgency: "Wound & Scrape Care",
-          details: "Immediate first response for childhood playground cuts, scrapes, and injuries.",
-          transferTag: "VHH FIRST AID"
-        },
-        {
-          id: "hl-4",
-          name: "Mobility Aids & Physical Therapy Supplies",
-          specs: "Pediatric wheelchairs, walking frames, sensory exercise balls",
-          urgency: "Special Needs Care",
-          details: "Direct therapy assistance for our children living with Cerebral Palsy and developmental challenges.",
-          transferTag: "VHH SPECIAL NEEDS"
-        },
-        {
-          id: "hl-5",
-          name: "Hospital Emergency Fund",
-          specs: "Emergency medical escrow for external hospital surgeries & scans",
-          urgency: "Life-Saving Reserve",
-          details: "Guarantees rapid hospital admission whenever a child requires advanced surgical or diagnostic care.",
-          transferTag: "VHH EMERGENCY MED"
-        }
-      ]
-    },
-    {
-      id: "cooling",
-      label: "Cooling, Power & Home Comfort",
-      ageBracket: "Facility Infrastructure",
-      icon: Wind,
-      badgeColor: "bg-cyan-100 text-cyan-900 border-cyan-300",
-      consumptionSummary: "Kuje Abuja experiences extreme heat during dry seasons. Ensuring 239 children can rest, study, and sleep comfortably without heat rash requires reliable fans, nursery AC, and uninterrupted solar power.",
-      items: [
-        {
-          id: "cl-1",
-          name: "Standing Fans & Wall-Mounted Fans",
-          specs: "Ox, Panasonic, Century 18-inch industrial standing & wall fans",
-          urgency: "Dormitory Airflow",
-          details: "Keeping dormitories and study halls well-ventilated so children sleep peacefully and stay healthy.",
-          transferTag: "VHH FANS"
-        },
-        {
-          id: "cl-2",
-          name: "Air Conditioning Units (1.5HP / 2HP)",
-          specs: "Inverter AC units for Infant Nursery & Home Clinic",
-          urgency: "Nursery & Clinic Care",
-          details: "Newborn infants and feverish patients in our clinic require temperature regulation to prevent dehydration and heat exhaustion.",
-          transferTag: "VHH AIR CONDITIONING"
-        },
-        {
-          id: "cl-3",
-          name: "Solar Inverter Batteries & Servicing",
-          specs: "Tubular deep cycle batteries, lithium packs, solar panel servicing",
-          urgency: "24/7 Power Security",
-          details: "Eliminates dangerous darkness and diesel generator smoke, running lights and fans around the clock.",
-          transferTag: "VHH SOLAR"
-        },
-        {
-          id: "cl-4",
-          name: "Borehole Water Submersible Pump Servicing",
-          specs: "Industrial borehole pump servicing & clean water filtration",
-          urgency: "Clean Drinking Water",
-          details: "Supplies hundreds of litres of clean, drinkable running water daily for drinking, cooking, and baths.",
-          transferTag: "VHH WATER PUMP"
-        },
-        {
-          id: "cl-5",
-          name: "Bunk Bed Mattresses & Waterproof Protectors",
-          specs: "High-density foam mattresses (3x6), pillows, waterproof sheets",
-          urgency: "Restful Bedding",
-          details: "Durable bedding that stands up to bedwetting and ensures healthy spinal support for growing children.",
-          transferTag: "VHH MATTRESSES"
-        }
-      ]
-    },
-    {
-      id: "transit",
-      label: "Bus, Fuel & Caregiver Wages",
-      ageBracket: "Daily Operations",
-      icon: Bus,
-      badgeColor: "bg-indigo-100 text-indigo-900 border-indigo-300",
-      consumptionSummary: "Getting 239 children to external schools every morning requires a well-maintained bus and fuel. Behind every child are 30 devoted caregivers and house mothers who provide 24/7 round-the-clock loving care.",
-      items: [
-        {
-          id: "tr-1",
-          name: "School Bus Servicing & Mechanical Maintenance",
-          specs: "Brake pads, new heavy-duty tires, engine oil, shock absorbers",
-          urgency: "Child Transit Safety",
-          details: "Our school bus must remain 100% roadworthy to transport 239 children safely every single school morning.",
-          transferTag: "VHH BUS REPAIRS"
-        },
-        {
-          id: "tr-2",
-          name: "Qualified Engineer / Mechanic Hire",
-          specs: "Sponsor certified auto-mechanic servicing or connect a professional",
-          urgency: "Technical Service",
-          details: "You can either connect a verified mechanical engineer in Abuja to inspect our bus or sponsor maintenance fees.",
-          transferTag: "VHH MECHANIC HIRE"
-        },
-        {
-          id: "tr-3",
-          name: "Daily School Bus Transit Fuel",
-          specs: "Weekly diesel/petrol allocation for school and hospital runs",
-          urgency: "Transit Mobility",
-          details: "Fuel ensures our bus never breaks down on transit routes between Kuje and schools in town.",
-          transferTag: "VHH BUS FUEL"
-        },
-        {
-          id: "tr-4",
-          name: "30 Caregivers & House Mothers Monthly Wages",
-          specs: "Monthly caregiver stipends, cook, security, and home nurse support",
-          urgency: "24/7 Human Care",
-          details: "Our devoted staff members live with and care for 239 children 24/7. Their monthly stipend ensures dedicated loving continuity.",
-          transferTag: "VHH CAREGIVER WAGES"
         }
       ]
     }
@@ -502,7 +608,7 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`shrink-0 inline-flex items-center gap-2.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-200 border ${
+                className={`shrink-0 inline-flex items-center gap-2 px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-200 border ${
                   isActive
                     ? 'bg-vhh-green-900 text-white border-vhh-green-950 shadow-md scale-102'
                     : 'bg-white text-stone-700 border-stone-200 hover:border-vhh-green-700/60 hover:bg-stone-50'
@@ -570,6 +676,19 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
               <span>{currentCategoryData.consumptionSummary}</span>
             </div>
           </div>
+
+          {/* Special Farmer Notice when on Food Category */}
+          {currentCategoryData.farmerNotice && (
+            <div className="mt-4 p-4 rounded-2xl bg-amber-50 border border-amber-300/80 flex items-start gap-3 text-xs sm:text-sm text-amber-950">
+              <Wheat className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
+              <div>
+                <strong className="font-bold">A Direct Promise to Farmers &amp; Wholesalers:</strong>
+                <p className="mt-0.5 font-light leading-relaxed">
+                  {currentCategoryData.farmerNotice}
+                </p>
+              </div>
+            </div>
+          )}
         </motion.div>
 
         {/* ========================================================================= */}
@@ -584,7 +703,7 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
                 key={item.id}
                 initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: idx * 0.05 }}
+                transition={{ duration: 0.35, delay: idx * 0.04 }}
                 className="p-6 rounded-3xl bg-white border border-stone-200 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group"
               >
                 <div>
@@ -661,16 +780,16 @@ export const NeedsDirectory: React.FC<NeedsDirectoryProps> = ({
             </div>
             <div>
               <h5 className="font-serif text-base font-bold text-vhh-charcoal">
-                Buying in bulk or dispatching a full truckload of provisions?
+                Dispatching a full vehicle load, farm harvest, or wholesale carton delivery?
               </h5>
               <p className="text-xs text-stone-600 font-light mt-0.5">
-                Our gate receiving team will coordinate directly with your driver to ensure swift offloading at our Kuje grounds.
+                Our gate team in Kuje will coordinate directly with your driver to ensure smooth offloading at our sanctuary.
               </p>
             </div>
           </div>
 
           <a
-            href="https://wa.me/2349019303646?text=Hello%20Vine%20Heritage%20Home%2C%20I%20would%20like%20to%20arrange%20a%20bulk%20food%20or%20provisions%20delivery%20to%20your%20Kuje%20sanctuary.%20Kindly%20advise."
+            href="https://wa.me/2349019303646?text=Hello%20Vine%20Heritage%20Home%2C%20I%20would%20like%20to%20arrange%20a%20bulk%20delivery%20(food%2C%20produce%2C%20or%20supplies)%20to%20your%20Kuje%20sanctuary.%20Kindly%20advise."
             target="_blank"
             rel="noopener noreferrer"
             className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-vhh-green-900 text-white text-xs font-semibold hover:bg-vhh-green-800 transition-colors shadow-xs shrink-0"
