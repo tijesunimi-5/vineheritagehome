@@ -110,7 +110,7 @@ export const WhoWeAreSection: React.FC = () => {
             </p>
 
             <p className="mt-3 text-sm sm:text-base text-stone-600 font-light leading-relaxed">
-              Located at Kuje, Federal Capital Territory, Abuja, we exist to rescue and care for children facing cultural infanticide—particularly infants whose mothers passed away in childbirth, twins, and children with birth differences. Under the care of 30 devoted house mothers, caregivers, and a resident home nurse, <strong>239 children</strong> receive round-the-clock loving shelter, 3 nutritious daily meals, healthcare, and full sponsorship to attend accredited external schools from nursery through tertiary level.
+              Located at <strong>No. 4 Opposite Health Center Kiyi, along Kuje/Gwagwalada Road, Kuje, Abuja</strong>, we exist to rescue and care for children facing cultural infanticide—particularly infants whose mothers passed away in childbirth, twins, and children with birth differences. Under the care of 30 devoted house mothers, caregivers, and a resident home nurse, <strong>239 children</strong> receive round-the-clock loving shelter, 3 nutritious daily meals, healthcare, and full sponsorship to attend accredited external schools from nursery through tertiary level.
             </p>
 
             {/* Factual Highlight Points */}

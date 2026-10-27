@@ -6,8 +6,7 @@ import { Footer } from '@/components/Footer';
 import { OurStory } from '@/components/OurStory';
 import { SupportModal } from '@/components/SupportModal';
 import { VolunteerModal } from '@/components/VolunteerModal';
-import { PlaceholderBadge } from '@/components/PlaceholderBadge';
-import { ShieldCheck, ArrowLeft, Compass } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 export default function OurStoryPage() {
